@@ -38,10 +38,10 @@
             Kirjautuminen
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="kirjautuminen.php">Asukas</a></li>
-            <li><a class="dropdown-item" href="kirjautuminen.php">Asiakas</a></li>
-            <li><a class="dropdown-item" href="kirjautuminen.php">Isännöitsijä</a></li>
-            <li><a class="dropdown-item" href="kirjautuminen.php">Työntekijä</a></li>
+            <li><a class="dropdown-item" href="asukaskirjautuminen.php">Asukas</a></li>
+            <li><a class="dropdown-item" href="asiakaskirjautuminen.php">Asiakas</a></li>
+            <li><a class="dropdown-item" href="isankirjautuminen.php">Isännöitsijä</a></li>
+            <li><a class="dropdown-item" href="tyokirjautuminen.php">Työntekijä</a></li>
           </ul>
         </li>
       </ul>
