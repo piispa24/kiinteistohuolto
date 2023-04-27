@@ -38,6 +38,7 @@
               Kirjautuminen
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="kirjautuminen.php">Kirjautuminen</a></li>
               <li><a class="dropdown-item" href="asukaskirjautuminen.php">Asukas</a></li>
               <li><a class="dropdown-item" href="asiakaskirjautuminen.php">Asiakas</a></li>
               <li><a class="dropdown-item" href="isankirjautuminen.php">Isännöitsijä</a></li>
