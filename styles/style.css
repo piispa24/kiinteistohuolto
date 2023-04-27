@@ -9,7 +9,7 @@
 }
 /* Kirjautumis sivu */
 .form-label {
-    color: white;
+    /*color: white;*/
 }
 /* vikailmoitus BTN muokkaukset  */
 #vikailmoitusBtn {
@@ -58,11 +58,16 @@
   .underline {
     text-decoration: none;
   }
- 
-  body {
-    background-color: aqua !important;
+  /* Yhteydenotto Sivu ja kirjautumissivu*/
+  #yhteysNimi, #yhteysEmail, #yhteysPuhelinnro, #yhteysOtsikko, #yhteysAsia, #vikaAsia, #vikaOtsikko, #kirjautuminenPsw, #kirjautuminenEmail {
+    border: 3px solid lightgreen !important;
+    border-radius: 20px;
+    padding: 10px;
   }
 
-  #yhteysNimi {
-    border: 1px solid green !important;
+  #contactBg, #vikaBg, #kirjautuminenBg{
+    border-radius: 30px !important;
+    border: 3px solid lightgreen !important;
   }
+
+  
