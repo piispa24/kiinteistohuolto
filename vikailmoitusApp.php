@@ -2,7 +2,7 @@
 
 <div id="vikailmoitusBtn" class="container-fluid">
     <div class="col-">
-        <a href="###">
+        <a href="vikailmoitusSivu.php">
             <button id="vikailmoitusBtn">Tee vikailmoitus</button>
         </a>
 
