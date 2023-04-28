@@ -1,4 +1,5 @@
 <?php 
+require "header.php"; 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -6,44 +7,31 @@ error_reporting(E_ALL);
 
 <?php 
 require "connect.php";
-require "header.php"; 
+
 ?>
 
 <?php
-if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
 
-    if (empty($email) || empty($password)) {
-        echo "Password or email missing";
+require('connect.php');
+
+if(isset($_POST['submit'])) {
+    $tyontekijasposti = $_POST['email'];
+    $passwd = $_POST['password'];
+    
+    $komento = "SELECT * FROM tyontekija WHERE tyontekijasposti = '$tyontekijasposti' AND tyontekijasalasana = '$passwd'";
+    $kirjaudu = $yhteys->query($komento);
+    $kirjaudu->execute();
+    $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
+    
+    if ($data) {
+        // user is authenticated, redirect to the secure page
+        header('Location: tyontekijaApp.php');
+        exit;
       } else {
-        $kirjaudu = $yhteys->prepare("SELECT * FROM asukas WHERE email = ?");
-        $kirjaudu->execute([$email]);
-        $user = $kirjaudu->fetch(PDO::FETCH_ASSOC);
-
-        if(!$user) {
-            // Jos ei löydy asukasta, katso työntekijät taulu
-            $kirjaudu = $yhteys->prepare("SELECT * FROM tyontekija WHERE email = ? AND rooliID = 2");
-            $kirjaudu->execute([$email]);
-            $user = $kirjaudu->fetch(PDO::FETCH_ASSOC);
-        }
-        if(!$user) {
-            // Jos ei löydy asukasta tai työntekijää, katso onko työnjohtaja
-            $kirjaudu = $yhteys->prepare("SELECT * FROM tyontekija WHERE email = ? AND rooliID = 3");
-            $kirjaudu->execute([$email]);
-            $user = $kirjaudu->fetch(PDO::FETCH_ASSOC);
-        }
-        // Ohjaa roolin perusteella
-        if($user) {
-            if (isset($user['asukasID'])) {
-                header("Location: asukasApp.php");
-            } else if (isset($user['tyontekijaID']) && $user['rooliID'] == 2) {
-                header("Location: tyontekijaApp.php");
-            } else if (isset($user['tyontekijaID']) && $user['rooliID'] == 3) {
-                header("Location: tyonjohtoApp.php");
-            }
-        }
+        // authentication failed, show an error message
+        echo 'Invalid email or password';
       }
+    
 }
 
 ?>
@@ -53,7 +41,7 @@ if (isset($_POST['submit'])) {
 <h1>Työntekijä kirjautuminen</h1>
 </div>
 <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 mt-5">
-    <form medhod="POST" action="">
+    <form method="POST" action="kirjautuminen.php">
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Sähköposti:</label>
         <input type="email" class="form-control" id="kirjautuminenEmail" placeholder="Enter email" name="email">
@@ -62,7 +50,7 @@ if (isset($_POST['submit'])) {
         <label for="password" class="form-label">Salasana:</label>
         <input type="password" class="form-control" id="kirjautuminenPsw" placeholder="Enter password" name="password">
     </div>
-        <button type="submit" class="btn btn-success">Kirjaudu</button>
+        <button type="submit" class="btn btn-success" name="submit">Kirjaudu</button>
     </form>
 </div>
 
