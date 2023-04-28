@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
     
     if ($data) {
         // user is authenticated, set session variable and redirect to the secure page
-        $_SESSION['tyontekijasposti'] = $tyontekijasposti;
+        $_SESSION['email'] = $tyontekijasposti;
         
         header('Location: tyontekijaApp.php');
         exit;
@@ -30,14 +30,14 @@ if(isset($_POST['submit'])) {
     
 }
 
-if(isset($_SESSION['tyontekijasposti'])) {
+if(isset($_SESSION['email'])) {
     header("location: index.php");
   }
 ?>
 
 
 <div class="container-fluid col-sm-6 mt-5">
-<h1>Työntekijä kirjautuminen</h1>
+<h1>Työntekijäkirjautuminen</h1>
 </div>
 <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 mt-5">
     <form method="POST" action="kirjautuminen.php">

@@ -19,7 +19,7 @@ session_start();
   <body>
     <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <p class="navbar-brand" href="#">Kiinteistöhuolto Piispanen&Lönnberg</p>
+      <p class="navbar-brand" href="#">Kiinteistöhuolto Piispanen & Lönnberg</p>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
