@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 require "header.php"; 
 require "connect.php";
 ini_set('display_errors', 1);
@@ -18,7 +19,8 @@ if(isset($_POST['submit'])) {
     
     if ($data) {
         // user is authenticated, set session variable and redirect to the secure page
-        $_SESSION['email'] = $tyontekijasposti;
+        $_SESSION['tyontekijasposti'] = $tyontekijasposti;
+        
         header('Location: tyontekijaApp.php');
         exit;
       } else {
@@ -28,7 +30,7 @@ if(isset($_POST['submit'])) {
     
 }
 
-if(isset($_SESSION['email'])) {
+if(isset($_SESSION['tyontekijasposti'])) {
     header("location: index.php");
   }
 ?>

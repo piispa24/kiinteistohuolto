@@ -37,17 +37,15 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="contact.php">Ota yhteyttä</a>
           </li>
-          <?php if(!isset($_SESSION['email'])): ?>
+          <?php if(!isset($_SESSION['email']) ): ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Kirjautuminen
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="kirjautuminen.php">Kirjautuminen</a></li>
+              <li><a class="dropdown-item" href="kirjautuminen.php">Työntekijä</a></li>
               <li><a class="dropdown-item" href="asukaskirjautuminen.php">Asukas</a></li>
-              <li><a class="dropdown-item" href="asiakaskirjautuminen.php">Asiakas</a></li>
               <li><a class="dropdown-item" href="isankirjautuminen.php">Isännöitsijä</a></li>
-              <li><a class="dropdown-item" href="tyokirjautuminen.php">Työntekijä</a></li>
             </ul>
           </li>
             <?php else : ?>
