@@ -6,7 +6,7 @@
       <p><a class="underline btn tyontekijaBtn" href="vikailmoitusListaus.php">Katso vikailmoitukset</a></p>
     </div>
     <div class="col-6 p-5 tyontekijaRivi">
-      <p><a class="underline btn tyontekijaBtn" href="####">Katso työntekijän status</a></p>
+      <p><a class="underline btn tyontekijaBtn" href="tyontekijaStatus.php">Katso työntekijän status</a></p>
     </div>
   </div>
   <div class="row tyontekijaRivi">

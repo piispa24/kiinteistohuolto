@@ -1,6 +1,6 @@
 <?php
 
-header("Acces-Control-Allow-Origin: *");
+header("Acces-Control-Allow-Origin: ");
 
 include("connect.php");
 $kysely = "SELECT *, asukas.asukasnimi, taloyhtio.osoite FROM vikailmoitus INNER JOIN asukas ON vikailmoitus.asukasID = asukas.asukasID INNER JOIN taloyhtio ON vikailmoitus.taloyhtionID = taloyhtio.taloyhtioID";
