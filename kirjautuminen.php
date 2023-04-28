@@ -1,19 +1,12 @@
-<?php 
+<?php session_start();
 require "header.php"; 
+require "connect.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 
-<?php 
-require "connect.php";
-
-?>
-
 <?php
-
-require('connect.php');
-
 if(isset($_POST['submit'])) {
     $tyontekijasposti = $_POST['email'];
     $passwd = $_POST['password'];
@@ -24,7 +17,8 @@ if(isset($_POST['submit'])) {
     $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
     
     if ($data) {
-        // user is authenticated, redirect to the secure page
+        // user is authenticated, set session variable and redirect to the secure page
+        $_SESSION['email'] = $tyontekijasposti;
         header('Location: tyontekijaApp.php');
         exit;
       } else {
@@ -34,6 +28,9 @@ if(isset($_POST['submit'])) {
     
 }
 
+if(isset($_SESSION['email'])) {
+    header("location: index.php");
+  }
 ?>
 
 
