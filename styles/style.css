@@ -79,4 +79,14 @@
     border: 3px solid lightgreen !important;
   }
 
-  
+  body {
+    background-color: rgb(170, 170, 170);
+  }
+
+  .container {
+    background-color: white;
+  }
+
+  .cont-image {
+    opacity: 0.7;
+  }
