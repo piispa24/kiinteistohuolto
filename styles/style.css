@@ -8,9 +8,7 @@
     color: white !important;
 }
 /* Kirjautumis sivu */
-.form-label {
-    /*color: white;*/
-}
+
 /* vikailmoitus BTN muokkaukset  */
 #vikailmoitusBtn {
     position: absolute;
