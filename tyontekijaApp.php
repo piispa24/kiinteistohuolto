@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-6 p-5 tyontekijaRivi">
-      <p><a class="underline btn tyontekijaBtn" href="#####">Katso vikailmoitukset</a></p>
+      <p><a class="underline btn tyontekijaBtn" href="#####">Katso omat vikailmoitukset</a></p>
     </div>
 </div>
 

@@ -7,8 +7,9 @@
     </div>
 
     <div class="col-6 p-5 tyontekijaRivi">
-      <p><a class="underline btn tyontekijaBtn" href="#######">Katso omat tiedot</a></p>
+      <p><a class="underline btn tyontekijaBtn" href="asukasRekisterointi.php">Lisää asukas</a></p>
     </div>
 </div>
+
 
 <?php require "footer.php"; ?>
