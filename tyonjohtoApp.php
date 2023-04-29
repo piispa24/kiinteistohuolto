@@ -18,7 +18,7 @@ if(!isset($_SESSION['tyojohtoemail'])){
   </div>
   <div class="row tyontekijaRivi">
   <div class="col-sm-6 p-5 tyontekijaRivi">
-      <p><a class="underline btn btn-grad" href="####">Katso uudet yhteydenotot</a></p>
+      <p><a class="underline btn btn-grad" href="katsoYhteydenotto.php">Katso uudet yhteydenotot</a></p>
     </div>
     <div class="col-sm-6 p-5 tyontekijaRivi">
       <p><a class="underline btn btn-grad" href="tyontekijaRekisterointi.php">Lisää työntekijä</a></p>
