@@ -1,8 +1,11 @@
-<footer class="bg-dark fixed-bottom">
-  <div class="container">
-    <p id="footer">Y-Tunnus 978987397839-22 Puhelin:95959333</p>
+
+<footer class="footer">
+  <div class="container" style="background-color: #333;" id="footer">
+    <p>Y-Tunnus 978987397839-22 Puhelin:95959333</p>
   </div>
 </footer>
+
+
 
 
     <!-- Optional JavaScript; choose one of the two! -->
