@@ -33,10 +33,10 @@ if(isset($_POST['submit'])){
 ?>
 
 <main class="form-signin w-50 m-auto">
-<h3 class="h3 mt-5 fw-normal text-center">Lisää työntekijä</h3>
-  <form class="bg-light p-5 inputBg" method="POST" action="tyontekijaRekisterointi.php">
-  
 
+  <form class="bg-light p-3 inputBg mt-3" method="POST" action="tyontekijaRekisterointi.php">
+  <h3 class="h3 fw-normal text-center">Lisää työntekijä</h3>
+  <p><a href=tyonjohtoApp.php class="btn btn-success">Takaisin</a></p>
     <div class="form-floating">
       <input name="nimi" type="text" class="form-control inputSarake mb-2" id="floatingInput">
       <label for="floatingInput">Nimi</label>

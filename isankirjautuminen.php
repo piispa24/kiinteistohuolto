@@ -9,36 +9,35 @@ error_reporting(E_ALL);
 <?php
 if(isset($_POST['submit'])) {
     $isannoitsijasposti = $_POST['email'];
-    $isannoitsijasalasana = $_POST['password'];
+    $passwd = $_POST['password'];
     
-    $komento = "SELECT * FROM asukas WHERE isannoitsijasposti = '$isannoitsijasposti' AND isannoitsijasalasana = '$isannoitsijasalasana'";
+    $komento = "SELECT * FROM isannoitsija WHERE isannoitsijasposti = '$isannoitsijasposti' AND isannoitsijasalasana = '$passwd'";
     $kirjaudu = $yhteys->query($komento);
     $kirjaudu->execute();
     $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
     
     if ($data) {
         // user is authenticated, set session variable and redirect to the secure page
-        $_SESSION['email'] = $isannoitsijasposti;
-        header('Location: vikailmoitusApp.php');
+        $_SESSION['isannsposti'] = $isannoitsijasposti;
+        header('Location: isannoitsijaApp.php');
         exit;
       } else {
         // authentication failed, show an error message
         echo 'Invalid email or password';
       }
-    
 }
 
-if(isset($_SESSION['email'])) {
+if(isset($_SESSION['isannsposti'])) {
     header("location: index.php");
   }
 ?>
 
 
 <div class="container-fluid col-sm-6 mt-5">
-<h1>Isännöitsijäkirjautuminen</h1>
 </div>
 <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 mt-5">
-    <form method="POST" action="asukaskirjautuminen.php">
+<h1>Isännöitsijän kirjautuminen</h1>
+    <form method="POST" action="isankirjautuminen.php">
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Sähköposti:</label>
         <input type="email" class="form-control" id="kirjautuminenEmail" placeholder="Enter email" name="email">

@@ -38,15 +38,16 @@ session_start();
             <a class="nav-link" href="contact.php">Ota yhteyttä</a>
           </li>
 
-          <?php if(!isset($_SESSION['email']) && !isset($_SESSION['sposti']) ): ?>
+          <?php if(!isset($_SESSION['email']) && !isset($_SESSION['sposti']) && !isset($_SESSION['isannsposti']) && !isset($_SESSION['tyojohtoemail'])): ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Kirjautuminen
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="kirjautuminen.php">Työntekijä</a></li>
               <li><a class="dropdown-item" href="asukaskirjautuminen.php">Asukas</a></li>
               <li><a class="dropdown-item" href="isankirjautuminen.php">Isännöitsijä</a></li>
+              <li><a class="dropdown-item" href="kirjautuminen.php">Työntekijä</a></li>
+              <li><a class="dropdown-item" href="tyokirjautuminen.php">Työnjohto</a></li>
             </ul>
           </li>
 
@@ -54,9 +55,22 @@ session_start();
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <!--If else; jos sposti on asetettu, näytetään sposti ja jos ei, niin näytetään email-->  
-            <?php echo isset($_SESSION['sposti']) ? $_SESSION['sposti'] : $_SESSION['email']; ?>
+            <?php echo isset($_SESSION['isannsposti']) ? $_SESSION['isannsposti'] : (isset($_SESSION['tyojohtoemail']) ? $_SESSION['tyojohtoemail'] : (isset($_SESSION['sposti']) ? $_SESSION['sposti'] : $_SESSION['email'])); ?>
             </a>
             <ul class="dropdown-menu">
+              <!-- Valitsee alasvetovalikkoon sovelluksen kirjautujan mukaan -->
+              <?php if(isset($_SESSION['isannsposti'])): ?>
+                <li><a class="dropdown-item" href="isannoitsijaApp.php">Isännöitsijäpaneeli</a></li>
+              <?php endif; ?>
+              <?php if(isset($_SESSION['tyojohtoemail'])): ?>
+                <li><a class="dropdown-item" href="tyonjohtoApp.php">Työnjohtopaneeli</a></li>
+              <?php endif; ?>
+              <?php if(isset($_SESSION['sposti'])): ?>
+                <li><a class="dropdown-item" href="vikailmoitusApp.php">Asukaspaneeli</a></li>
+              <?php endif; ?>
+              <?php if(isset($_SESSION['email'])): ?>
+                <li><a class="dropdown-item" href="tyontekijaApp.php">Työntekijäpaneeli</a></li>
+              <?php endif; ?>
               <li><a class="dropdown-item" href="logout.php">Kirjaudu ulos</a></li>
             </ul>
           </li>

@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
     $tyontekijasposti = $_POST['email'];
     $passwd = $_POST['password'];
     
-    $komento = "SELECT * FROM tyontekija WHERE tyontekijasposti = '$tyontekijasposti' AND tyontekijasalasana = '$passwd'";
+    $komento = "SELECT * FROM tyontekija WHERE tyontekijasposti = '$tyontekijasposti' AND tyontekijasalasana = '$passwd' AND rooliID = 2";
     $kirjaudu = $yhteys->query($komento);
     $kirjaudu->execute();
     $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
@@ -20,7 +20,6 @@ if(isset($_POST['submit'])) {
     if ($data) {
         // user is authenticated, set session variable and redirect to the secure page
         $_SESSION['email'] = $tyontekijasposti;
-        
         header('Location: tyontekijaApp.php');
         exit;
       } else {
@@ -35,11 +34,8 @@ if(isset($_SESSION['email'])) {
   }
 ?>
 
-
-<div class="container-fluid col-sm-6 mt-5">
-<h1>Työntekijäkirjautuminen</h1>
-</div>
 <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 mt-5">
+<h1>Työntekijän kirjautuminen</h1>
     <form method="POST" action="kirjautuminen.php">
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Sähköposti:</label>

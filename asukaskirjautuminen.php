@@ -32,11 +32,8 @@ if(isset($_SESSION['sposti'])) {
 }
 ?>
 
-
-<div class="container-fluid col-sm-6 mt-5">
-<h1>Asukaskirjautuminen</h1>
-</div>
 <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 mt-5">
+<h1>Asukkaan kirjautuminen</h1>
     <form method="POST" action="asukaskirjautuminen.php">
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Sähköposti:</label>

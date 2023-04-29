@@ -1,4 +1,6 @@
-<?php require "header.php"; 
+<?php 
+session_start();
+require "header.php"; 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);?>
@@ -7,6 +9,14 @@ error_reporting(E_ALL);?>
         <br>
       <h3>Vikailmoitukset</h3>
       <br>
+      <!--Näyttää tyonjohtoappiin vievän napin kun sessio on tyojohtoemail-->
+      <?php if(isset($_SESSION['tyojohtoemail'])): ?>
+        <p><a href=tyonjohtoApp.php class="btn btn-success">Takaisin</a></p>
+      <?php endif; ?>
+            <!--Näyttää tyontekijäappiin vievän napin kun sessio on email-->
+      <?php if(isset($_SESSION['email'])): ?>
+        <p><a href=tyontekijaApp.php class="btn btn-success">Takaisin</a></p>
+      <?php endif; ?>
       
    <table class="table table-striped">
       <tr>
