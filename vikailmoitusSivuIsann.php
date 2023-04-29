@@ -2,7 +2,7 @@
 require "connect.php";
 require "header.php"; 
 if(!isset($_SESSION['email']) && (!isset($_SESSION['sposti'])) && (!isset($_SESSION['isannsposti'])) && (!isset($_SESSION['tyojohtoemail']))){
-  header("Location: asukaskirjautuminen.php");
+  header("Location: isankirjautuminen.php");
   exit;
 }
 ini_set('display_errors', 1);
@@ -11,17 +11,17 @@ error_reporting(E_ALL);
 ?>
 
 <?php
-// Hakee asukkaan asukasIDn ja taloyhtioIDn tietokannasta
-$email = $_SESSION['sposti']; // Valitsee asukkaan session
-$query = "SELECT asukasID, taloyhtioID FROM asukas WHERE asukassposti = :asukassposti";
+// Hakee isännöitsijän isannoitsijaIDn tietokannasta
+$email = $_SESSION['isannsposti']; // Valitsee asukkaan session
+$query = "SELECT isannoitsijaID, taloyhtioID FROM isannoitsija WHERE isannoitsijasposti = :isannoitsijasposti";
 $stmt = $yhteys->prepare($query);
-$stmt->bindParam(':asukassposti', $email);
+$stmt->bindParam(':isannoitsijasposti', $email);
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Esitäytä formin kentät
-$asukasID = $result['asukasID'];
-$taloyhtionID = $result['taloyhtioID'];
+$isannoitsijaID = $result['isannoitsijaID'];
+$taloyhtioID = $result['taloyhtioID'];
 ?>
 
 <?php
@@ -58,12 +58,12 @@ if(isset($_POST['talleta'])){
 
     <div class="mb-1 mt-4" style="display: none;">
         <label for="otsikko" class="form-label"></label>
-        <input type="hidden" class="form col-sm-4" placeholder="" name="asukas" value="<?php echo $asukasID; ?>">
+        <input type="hidden" class="form col-sm-4" placeholder="" name="isannoitsija" value="<?php echo $isannoitsijaID; ?>">
     </div>
 
     <div class="mb-1 mt-4" style="display: none;">
         <label for="otsikko" class="form-label"></label>
-        <input type="hidden" class="form col-sm-4" placeholder="" name="taloyhtio" value="<?php echo $taloyhtionID; ?>">
+        <input type="hidden" class="form col-sm-4" placeholder="" name="taloyhtio" value="<?php echo $taloyhtioID; ?>">
 
     </div>
     <h5>Otsikko:</h5>  
@@ -81,3 +81,5 @@ if(isset($_POST['talleta'])){
 </div>
 
 <?php require "footer.php"; ?>
+
+
