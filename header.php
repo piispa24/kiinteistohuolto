@@ -37,27 +37,31 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="contact.php">Ota yhteyttä</a>
           </li>
+
           <?php if(!isset($_SESSION['email']) && !isset($_SESSION['sposti']) ): ?>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Kirjautuminen
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <li><a class="dropdown-item" href="kirjautuminen.php">Työntekijä</a></li>
-      <li><a class="dropdown-item" href="asukaskirjautuminen.php">Asukas</a></li>
-      <li><a class="dropdown-item" href="isankirjautuminen.php">Isännöitsijä</a></li>
-    </ul>
-  </li>
-<?php else : ?>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <?php echo isset($_SESSION['sposti']) ? $_SESSION['sposti'] : $_SESSION['email']; ?>
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="logout.php">Kirjaudu ulos</a></li>
-    </ul>
-  </li>
-<?php endif; ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Kirjautuminen
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="kirjautuminen.php">Työntekijä</a></li>
+              <li><a class="dropdown-item" href="asukaskirjautuminen.php">Asukas</a></li>
+              <li><a class="dropdown-item" href="isankirjautuminen.php">Isännöitsijä</a></li>
+            </ul>
+          </li>
+
+        <?php else : ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!--If else; jos sposti on asetettu, näytetään sposti ja jos ei, niin näytetään email-->  
+            <?php echo isset($_SESSION['sposti']) ? $_SESSION['sposti'] : $_SESSION['email']; ?>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="logout.php">Kirjaudu ulos</a></li>
+            </ul>
+          </li>
+          
+        <?php endif; ?>
         </li>
         </ul>
       </div>
