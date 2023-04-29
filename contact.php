@@ -1,10 +1,6 @@
-<?php require "header.php"; 
-      require "connect.php"
-?>
+<?php require "header.php"; ?>
 <?php 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+
     if(isset($_POST['talleta'])){
         $nimi = $_POST['nimi'];
         $email = $_POST['email'];
@@ -21,9 +17,7 @@
         $lisaa->bindValue(':yhtpuhnro', $puhnro, PDO::PARAM_STR);
         $lisaa->bindValue(':yhtsposti', $email, PDO::PARAM_STR);
         $lisaa->execute();
-        
-        echo "Yhteydenotto lähetetty onnistuneesti";
-        
+        header("location:index.php");
     }
     
 

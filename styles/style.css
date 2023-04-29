@@ -2,7 +2,40 @@
 #footer {           
     color: white;
     text-align: center;
+
 }
+.footer {
+  background-color: #333;
+  color: white;
+  height: 100px; /* set the height of the footer */
+  position: fixed; /* position the footer */
+  bottom: 0; /* place the footer at the bottom of the page */
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container-index {
+  height: 100vh;
+}
+
+h3, h1 {
+  text-shadow:
+    -1px -1px 0 #808080,  
+     1px -1px 0 #808080,
+    -1px 1px 0 #808080,
+     1px 1px 0 #808080;  
+}
+
+.container-index {
+  background-image: url("https://cdn.pixabay.com/photo/2019/01/10/20/54/building-maintenance-3926053_960_720.jpg");
+  background-size: cover;
+}
+
+
 /* NAVBAR */
 .nav-link {
     color: white !important;
@@ -73,6 +106,28 @@
     color: #fff;
     text-decoration: none;
   }
+
+
+  .btn-grad2 {
+    background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%);
+    margin: 10px;
+    width: 270px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    border-radius: 10px;
+    display: block;
+  }
+
+  .btn-grad2:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
  /* eri buttoneita täältä https://gradientbuttons.colorion.co/ */
 
   .underline {
@@ -111,4 +166,15 @@
 
   .cont-image {
     opacity: 0.7;
+    margin-right: 0;
+  }
+
+  .gradient-circle {
+    width: 65px;
+    height: 65px;
+    background: rgb(121,140,140);
+    background: radial-gradient(circle, rgba(121,140,140,1) 0%, rgba(5,20,20,1) 100%);
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 auto;
   }
