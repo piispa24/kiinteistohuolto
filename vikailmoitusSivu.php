@@ -49,9 +49,9 @@ if(isset($_POST['talleta'])){
 
 <div id="contactBg" class="container mt-5 bg-light p-5">
     <!-- Vie takaisin asukkaan vikailmoitusappisessioon -->
-<?php if(isset($_SESSION['sposti'])): ?>
+    <?php if(isset($_SESSION['sposti'])): ?>
         <p><a href=vikailmoitusApp.php class="btn btn-success">Takaisin</a></p>
-      <?php endif; ?>
+    <?php endif; ?>
 <h4>Tee vikailmoitus yhtiöön</h4><br>
 
     <form method="POST" action="vikailmoitusSivu.php">
@@ -64,8 +64,8 @@ if(isset($_POST['talleta'])){
     <div class="mb-1 mt-4" style="display: none;">
         <label for="otsikko" class="form-label"></label>
         <input type="hidden" class="form col-sm-4" placeholder="" name="taloyhtio" value="<?php echo $taloyhtionID; ?>">
-
     </div>
+
     <h5>Otsikko:</h5>  
     <div class="mb-4 mt-4">
         <label for="otsikko" class="form-label"></label>
