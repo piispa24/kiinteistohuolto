@@ -10,7 +10,7 @@ if(!isset($_SESSION['tyojohtoemail'])){
 <div class="container-fluid p-5">
   <div class="row">
     <div class="col-sm-6 p-5 tyontekijaRivi">
-      <p><a class="underline btn btn-grad" href="vikailmoitusListaus.php">Katso vikailmoitukset</a></p>
+      <p><a class="underline btn btn-grad" href="tyonjohtoVikalistaus.php">Katso vikailmoitukset</a></p>
     </div>
     <div class="col-sm-6 p-5 tyontekijaRivi">
       <p><a class="underline btn btn-grad" href="tyontekijaStatus.php">Katso työntekijän status</a></p>

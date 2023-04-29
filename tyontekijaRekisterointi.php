@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
     </div>
     <div class="form-floating">
       <input name="rooli" type="text" class="form-control inputSarake mb-2" id="floatingInput" value="2">
-      <label for="floatingInput">Rooli</label>
+      <label for="floatingInput">Rooli (1=Asukas 2=Työntekijä 3=Työnjohtaja 4=Isännöitsijä)</label>
     </div>
     
 
