@@ -64,6 +64,7 @@ require "header.php";
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
     </table>
    </div>
 
