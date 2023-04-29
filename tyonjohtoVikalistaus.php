@@ -1,9 +1,7 @@
 <?php 
 session_start();
 require "header.php"; 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);?>
+?>
 
 <div class="container">
         <br>
@@ -24,11 +22,12 @@ error_reporting(E_ALL);?>
          <th>Osoite</th>
          <th>Vikaotsikko</th>
          <th>Vika asia</th>
+         <th>Työntekijä</th>
          <th></th>
       </tr>
         
             <?php
-              include("listaus.php");
+              include("listausTyonjohtoTesti.php");
              
               $viat = json_decode($JSON, true);
 
@@ -36,11 +35,13 @@ error_reporting(E_ALL);?>
                 foreach($viat as $key){
                   foreach($key as $vika){
                     ?>
+                    
                     <tr>                    
                       <td><?php echo $vika['Asukasnimi']; ?> </td>
                       <td><?php echo $vika['Osoite']; ?> </td>
                       <td><?php echo $vika['Vikaotsikko']; ?> </td>
                       <td><?php echo $vika['Vikaasia']; ?> </td>
+                      <td><?php echo $vika['Tyontekijanimi']; ?> </td>
                       <td><p><a href="###" class="btn btn-warning">Siirrä työntekijälle</a></p> </td>
                     </tr>
                     
@@ -63,7 +64,10 @@ error_reporting(E_ALL);?>
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
     </table>
    </div>
 
 <?php require "footer.php"; ?>
+
+
