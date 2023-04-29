@@ -11,22 +11,31 @@ error_reporting(E_ALL);
 ?>
 
 <?php
+
+// Hakee taloyhtion nimen
+
 // Hakee isännöitsijän isannoitsijaIDn tietokannasta
-$email = $_SESSION['isannsposti']; // Valitsee asukkaan session
-$query = "SELECT isannoitsijaID, taloyhtioID FROM isannoitsija WHERE isannoitsijasposti = :isannoitsijasposti";
-$stmt = $yhteys->prepare($query);
-$stmt->bindParam(':isannoitsijasposti', $email);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$email = $_SESSION['isannsposti']; // Valitsee isännöitsijän session
+$query = "SELECT isannoitsija.isannoitsijaID, taloyhtio.taloyhtioID, taloyhtio.taloyhtionnimi, taloyhtio.talotyyppiID, taloyhtio.osoite 
+            FROM isannoitsija 
+            INNER JOIN taloyhtio ON isannoitsija.taloyhtioID = taloyhtio.taloyhtioID 
+            WHERE isannoitsija.isannoitsijasposti = :isannoitsijasposti";
+
+$haku = $yhteys->prepare($query);
+$haku->bindParam(':isannoitsijasposti', $email);
+$haku->execute();
+$result = $haku->fetch(PDO::FETCH_ASSOC);
 
 // Esitäytä formin kentät
 $isannoitsijaID = $result['isannoitsijaID'];
 $taloyhtioID = $result['taloyhtioID'];
+// Taloyhtionnimi
+$taloyhtionnimi = $result['taloyhtionnimi'];
 ?>
 
 <?php
 
-// Asukkaan vikailmoitus tietokantaan
+// Isännöitsijän vikailmoitus tietokantaan
 if(isset($_POST['talleta'])){
     $asukas = $_POST['asukas'];
     $taloyhtio = $_POST['taloyhtio'];
@@ -48,11 +57,12 @@ if(isset($_POST['talleta'])){
 ?>
 
 <div id="contactBg" class="container mt-5 bg-light p-5">
-    <!-- Vie takaisin asukkaan vikailmoitusappisessioon -->
-<?php if(isset($_SESSION['sposti'])): ?>
-        <p><a href=vikailmoitusApp.php class="btn btn-success">Takaisin</a></p>
-      <?php endif; ?>
-<h4>Tee vikailmoitus yhtiöön</h4><br>
+    <!-- Vie takaisin isännöitsijän vikailmoitusappisessioon -->
+    <?php if(isset($_SESSION['isannsposti'])): ?>
+        <p><a href=isannoitsijaApp.php class="btn btn-success">Takaisin</a></p>
+    <?php endif; ?>
+      <h4>Tee vikailmoitus <?php echo $taloyhtionnimi; ?> taloyhtiöön</h4><br>
+
 
     <form method="POST" action="vikailmoitusSivu.php">
 
@@ -65,6 +75,11 @@ if(isset($_POST['talleta'])){
         <label for="otsikko" class="form-label"></label>
         <input type="hidden" class="form col-sm-4" placeholder="" name="taloyhtio" value="<?php echo $taloyhtioID; ?>">
 
+    </div>
+    <h5>AsukasID:</h5>  
+    <div class="mb-4 mt-4">
+        <label for="otsikko" class="form-label"></label>
+        <input type="text" class="form col-sm-4" id="yhteysOtsikko" placeholder="" name="asukas">
     </div>
     <h5>Otsikko:</h5>  
     <div class="mb-4 mt-4">

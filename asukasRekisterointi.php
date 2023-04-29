@@ -34,9 +34,13 @@ if(isset($_POST['submit'])){
 ?>
 
 <main class="form-signin w-50 m-auto">
-  <h1 class="h3 mt-5 fw-normal text-center">Lisää asukas</h1>
-  <form class="bg-light p-5 inputBg" method="POST" action="asukasRekisterointi.php">
 
+  <form class="bg-light mt-3 p-5 inputBg" method="POST" action="asukasRekisterointi.php">
+    <!-- Vie takaisin isännöitsijän appiin -->
+    <?php if(isset($_SESSION['isannsposti'])): ?>
+      <p><a href=isannoitsijaApp.php class="btn btn-success">Takaisin</a></p>
+  <?php endif; ?>
+  <h1 class="h3 mb-3 fw-normal text-center">Lisää asukas</h1>
     <div class="form-floating">
       <input name="nimi" type="text" class="form-control inputSarake mb-2" id="floatingInput">
       <label for="floatingInput">Asukasnimi</label>
