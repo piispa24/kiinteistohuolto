@@ -1,5 +1,11 @@
-<?php session_start(); ?>
-<?php require "header.php"; ?>
+<?php session_start()?>
+<?php require 
+"header.php"; 
+if(!isset($_SESSION['sposti'])){
+  header("Location: asukaskirjautuminen.php");
+  exit;
+}
+?>
 
 <div class="container-fluid p-5">
   <div class="row">

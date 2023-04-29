@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 require "header.php"; 
 require "connect.php";
 ini_set('display_errors', 1);
@@ -18,19 +19,17 @@ if(isset($_POST['submit'])) {
     
     if ($data) {
         // user is authenticated, set session variable and redirect to the secure page
-        $_SESSION['email'] = $asukassposti;
+        $_SESSION['sposti'] = $asukassposti;
         header('Location: vikailmoitusApp.php');
         exit;
       } else {
         // authentication failed, show an error message
         echo 'Invalid email or password';
       }
-    
 }
-
-if(isset($_SESSION['email'])) {
+if(isset($_SESSION['sposti'])) {
     header("location: index.php");
-  }
+}
 ?>
 
 
