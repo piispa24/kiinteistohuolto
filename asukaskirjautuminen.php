@@ -7,6 +7,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 
+
+
+<div class="container-fluid p-0 container-paneeli">
 <?php
 if(isset($_POST['submit'])) {
     $asukassposti = $_POST['email'];
@@ -36,8 +39,6 @@ if(isset($_SESSION['sposti'])) {
     header("location: index.php");
 }
 ?>
-
-<div class="container-fluid p-0 container-paneeli">
 <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 login">
     <h1>Asukkaan kirjautuminen</h1>
     <form method="POST" action="asukaskirjautuminen.php">

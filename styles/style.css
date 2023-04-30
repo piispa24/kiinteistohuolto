@@ -244,7 +244,7 @@ body {
 }
 /* Yhteydenotto Sivu ja kirjautumissivu*/
 #yhteysNimi, #yhteysEmail, #yhteysPuhelinnro, #yhteysOtsikko, #yhteysAsia, #vikaAsia, #vikaOtsikko, #kirjautuminenPsw, #kirjautuminenEmail {
-  border: 3px solid lightgreen !important;
+  border: 3px solid rgb(0, 0, 0) !important;
   border-radius: 20px;
   padding: 10px;
 }
@@ -262,7 +262,7 @@ body {
 
 .inputBg{
   border-radius: 30px !important;
-  border: 3px solid lightgreen !important;
+  border: 3px solid rgb(194, 62, 73) !important;
 }
 
 body {

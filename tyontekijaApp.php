@@ -10,11 +10,11 @@ if(!isset($_SESSION['email'])){
   <div class="container">
     <div class="row">
         <div class="col-sm-6 p-5 tyontekijaRivi">
-          <p><a class="underline btn btn-grad" href="vikailmoitusListaus.php">Katso vikailmoitukset</a></p>
+          <p><a class="underline btn btn-danger btn-large" href="vikailmoitusListaus.php">Katso vikailmoitukset</a></p>
         </div>
 
         <div class="col-sm-6 p-5 tyontekijaRivi">
-          <p><a class="underline btn btn-grad" href="#####">Katso omat työtehtävät</a></p>
+          <p><a class="underline btn btn-danger btn-large" href="#####">Katso omat työtehtävät</a></p>
         </div>
     </div>
   </div>

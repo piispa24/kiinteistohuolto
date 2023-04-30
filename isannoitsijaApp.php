@@ -20,13 +20,13 @@ if(!isset($_SESSION['isannsposti'])){
       <div class="row">
         <div class="col-sm-6 p-5 tyontekijaRivi">
           <p>
-            <a class="underline btn btn-grad" href="vikailmoitusSivuIsann.php">Tee vikailmoitus</a>
+            <a class="underline btn btn-danger btn-large" href="vikailmoitusSivuIsann.php">Tee vikailmoitus</a>
           </p>
       </div>
 
         <div class="col-sm-6 p-5 tyontekijaRivi">
           <p>
-            <a class="underline btn btn-grad" href="asukasRekisterointi.php">Lisää asukas</a>
+            <a class="underline btn btn-danger btn-large" href="asukasRekisterointi.php">Lisää asukas</a>
           </p>
         </div>
     </div>
