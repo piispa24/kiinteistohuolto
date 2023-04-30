@@ -3,7 +3,7 @@ session_start();
 require "header.php"; 
 ?>
 
-<div class="container">
+<div class="container mt-5">
         <br>
       <h3>Vikailmoitukset</h3>
       <br>
@@ -37,12 +37,36 @@ require "header.php";
                     ?>
                     
                     <tr>                    
-                      <td><?php echo $vika['Asukasnimi']; ?> </td>
-                      <td><?php echo $vika['Osoite']; ?> </td>
-                      <td><?php echo $vika['Vikaotsikko']; ?> </td>
-                      <td><?php echo $vika['Vikaasia']; ?> </td>
-                      <td><?php echo $vika['Tyontekijanimi']; ?> </td>
-                      <td><p><a href="###" class="btn btn-warning">Siirrä työntekijälle</a></p> </td>
+                    <td><?php echo $vika['Asukasnimi']; ?> </td>
+                    <td><?php echo $vika['Osoite']; ?> </td>
+                    <td><?php echo $vika['Vikaotsikko']; ?> </td>
+                    <td><?php echo $vika['Vikaasia']; ?> </td>
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-default dropdown-toggle" href="#" id="navbarDropdownMenuLink<?php echo $vika['VikailmoitusID']; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $vika['Tyontekijanimi']; ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink<?php echo $vika['VikailmoitusID']; ?>">
+                                <?php
+                                require "connect.php";
+                                // Hae työntekijä db
+                                $query = "SELECT tyontekijanimi FROM tyontekija";
+                                $result = $yhteys->query($query);
+                                // Tee jokaiselle oma li elementti
+                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                    echo "<li class='dropdown-item' onclick='updateEmployee(\"" . $row['tyontekijanimi'] . "\", " . $vika['VikailmoitusID'] . ")'>" . $row['tyontekijanimi'] . "</li>";
+                                }
+                                ?>
+                            </ul>
+                        </div>
+
+                            <script>
+                                function updateEmployee(name, id) {
+                                    document.getElementById("navbarDropdownMenuLink" + id).innerHTML = name;
+                                }
+                            </script>
+                        </td>
+                        <td><p class="btn btn-warning">Siirrä työntekijälle</a></p> </td>
                     </tr>
                     
                     <?php  
@@ -69,5 +93,3 @@ require "header.php";
    </div>
 
 <?php require "footer.php"; ?>
-
-
