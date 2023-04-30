@@ -46,7 +46,7 @@ if(isset($_POST['talleta'])){
         $lisaa->bindValue(':vikaasia', $asia, PDO::PARAM_STR);
     
         $lisaa->execute();
-        header("location:vikailmoitusApp.php");
+        header("location:vikailmoitusApp.php?success=true");
     }
 }
 ?>
