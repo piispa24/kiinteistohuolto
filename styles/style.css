@@ -22,18 +22,38 @@ body {
   height: 100vh;
 }
 
-h3, h1 {
-  text-shadow:
-    -1px -1px 0 #808080,  
-     1px -1px 0 #808080,
-    -1px 1px 0 #808080,
-     1px 1px 0 #808080;  
+.container-index {
+  position: relative;
 }
 
-.container-index {
-  background-image: url("https://cdn.pixabay.com/photo/2019/01/10/20/54/building-maintenance-3926053_960_720.jpg");
+.container-index::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/container3.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.5; /* Adjust the opacity as desired */
 }
+
+.indextext {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .indextext {
+    margin-left: 0;
+    margin-top: 15%;
+  }
+}
+
+
 
 
 /* NAVBAR */
