@@ -54,7 +54,7 @@ require "header.php";
                                 $result = $yhteys->query($query);
                                 // Tee jokaiselle oma li elementti
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                    echo "<li class='dropdown-item' onclick='updateEmployee(\"" . $row['tyontekijanimi'] . "\", " . $vika['VikailmoitusID'] . ")'>" . $row['tyontekijanimi'] . "</li>";
+                                    echo '<li class="dropdown-item" onclick="updateEmployee(\'' . $row['tyontekijanimi'] . '\', ' . $vika['VikailmoitusID'] . ')">' . $row['tyontekijanimi'] . '<input type="hidden" name="tyontekijaID" value="' . $row['tyontekijaID'] . '"></li>';
                                 }
                                 ?>
                             </ul>
@@ -63,10 +63,11 @@ require "header.php";
                             <script>
                                 function updateEmployee(name, id) {
                                     document.getElementById("navbarDropdownMenuLink" + id).innerHTML = name;
+                                    document.getElementById("selectedTyontekijaID").value = id;
                                 }
                             </script>
                         </td>
-                        <td><p class="btn btn-warning">Siirrä työntekijälle</a></p> </td>
+                        <td><?php echo '<a href="siirraTehtava.php?tyontekijaID='.$vika['tyontekijaID'].'" class="btn btn-warning">Siirrä Tehtävä</a>'; ?></td>
                     </tr>
                     
                     <?php  
