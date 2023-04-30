@@ -7,7 +7,8 @@ if(!isset($_SESSION['sposti'])){
 }
 ?>
 
-<div class="container-fluid p-0">
+<div class="container-fluid p-0 container-paneeli">
+  <div class="container">
 <!-- Alert jos vikailmoituksen jättö onnistui. Hakee successin vikailmoitusSivu.php:sta -->
 <?php if(isset($_GET['success'])): ?>
   <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -25,5 +26,7 @@ if(!isset($_SESSION['sposti'])){
         <p><a class="underline btn btn-grad" href="#######">Katso omat tiedot</a></p>
       </div>
   </div>
+  </div>
+
 
 <?php require "footer.php"; ?>

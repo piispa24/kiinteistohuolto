@@ -20,31 +20,34 @@ session_start();
     <title>Kiinteistöhuolto</title>
   </head>
   <body>
+    <div class=" bg-danger">
+      <div class="ylarivi">Päivystys 24h 050 2223 344 • piispanenlonnberg @ kiinteistohuolto.com</div>
+    </div>
     <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <p class="navbar-brand" href="#">Kiinteistöhuolto Piispanen & Lönnberg</p>
+      <p class="navbar-brand p-3 m-3" href="#">Kiinteistöhuolto Piispanen & Lönnberg</p>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">Etusivu</a>
+            <a class="nav-link" href="index.php">ETUSIVU</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="yhteystiedot.php">Yhteystiedot</a>
+            <a class="nav-link" href="yhteystiedot.php">YHTEYSTIEDOT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="referenssit.php">Referenssit</a>
+            <a class="nav-link" href="referenssit.php">REFERENSSIT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.php">Ota yhteyttä</a>
+            <a class="nav-link" href="contact.php">OTA YHTEYTTÄ</a>
           </li>
 
           <?php if(!isset($_SESSION['email']) && !isset($_SESSION['sposti']) && !isset($_SESSION['isannsposti']) && !isset($_SESSION['tyojohtoemail'])): ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Kirjautuminen
+              KIRJAUTUMINEN
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="asukaskirjautuminen.php">Asukas</a></li>

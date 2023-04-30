@@ -37,8 +37,8 @@ if(isset($_SESSION['tyojohtoemail'])) {
   }
 ?>
 
-
-<div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 mt-5">
+<div class="container-fluid p-0 container-paneeli">
+<div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 login">
 <h1>Työnjohdon kirjautuminen</h1>
     <form method="POST" action="tyokirjautuminen.php">
     <div class="mb-3 mt-3">
@@ -51,6 +51,7 @@ if(isset($_SESSION['tyojohtoemail'])) {
     </div>
         <button type="submit" class="btn btn-success" name="submit">Kirjaudu</button>
     </form>
+</div>
 </div>
 
 <?php require "footer.php"; ?>

@@ -7,7 +7,8 @@ if(!isset($_SESSION['tyojohtoemail'])){
 }
 ?>
 
-<div class="container-fluid p-5">
+<div class="container-fluid p-0 container-paneeli">
+
   <div class="row">
     <div class="col-sm-6 p-5 tyontekijaRivi">
       <p><a class="underline btn btn-grad" href="tyonjohtoVikalistaus.php">Katso vikailmoitukset</a></p>
@@ -24,6 +25,8 @@ if(!isset($_SESSION['tyojohtoemail'])){
       <p><a class="underline btn btn-grad" href="tyontekijaRekisterointi.php">Lisää työntekijä</a></p>
     </div>
   </div>
+  </div>
+</div>
 </div>
 
 

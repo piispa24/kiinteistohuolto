@@ -36,19 +36,21 @@ if(isset($_SESSION['email'])) {
 }
 ?>
 
-<div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 mt-5">
-<h1>Työntekijän kirjautuminen</h1>
-    <form method="POST" action="kirjautuminen.php">
-    <div class="mb-3 mt-3">
-        <label for="email" class="form-label">Sähköposti:</label>
-        <input type="email" class="form-control" id="kirjautuminenEmail" placeholder="Enter email" name="email">
+<div class="container-fluid p-0 container-paneeli">
+    <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 login">
+        <h1>Työntekijän kirjautuminen</h1>
+            <form method="POST" action="kirjautuminen.php">
+            <div class="mb-3 mt-3">
+                <label for="email" class="form-label">Sähköposti:</label>
+                <input type="email" class="form-control" id="kirjautuminenEmail" placeholder="Enter email" name="email">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Salasana:</label>
+                <input type="password" class="form-control" id="kirjautuminenPsw" placeholder="Enter password" name="password">
+            </div>
+                <button type="submit" class="btn btn-success" name="submit">Kirjaudu</button>
+            </form>
     </div>
-    <div class="mb-4">
-        <label for="password" class="form-label">Salasana:</label>
-        <input type="password" class="form-control" id="kirjautuminenPsw" placeholder="Enter password" name="password">
-    </div>
-        <button type="submit" class="btn btn-success" name="submit">Kirjaudu</button>
-    </form>
 </div>
 
 <?php require "footer.php"; ?>
