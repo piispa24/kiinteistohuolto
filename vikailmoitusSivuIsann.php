@@ -36,23 +36,27 @@ $taloyhtionnimi = $result['taloyhtionnimi'];
 <?php
 
 // Isännöitsijän vikailmoitus tietokantaan
-if(isset($_POST['talleta'])){
+if(isset($_POST['talletaa'])){
     $asukas = $_POST['asukas'];
     $taloyhtio = $_POST['taloyhtio'];
     $otsikko = $_POST['otsikko'];
     $asia = $_POST['asia'];
 
-    $kysely = "INSERT INTO vikailmoitus (asukasID, taloyhtionID, vikaotsikko, vikaasia) 
-    VALUES (:asukasID, :taloyhtionID, :vikaotsikko, :vikaasia)";
-
-    $lisaa = $yhteys->prepare($kysely);
-    $lisaa->bindValue(':asukasID', $asukas, PDO::PARAM_STR);
-    $lisaa->bindValue(':taloyhtionID', $taloyhtio, PDO::PARAM_STR);
-    $lisaa->bindValue(':vikaotsikko', $otsikko, PDO::PARAM_STR);
-    $lisaa->bindValue(':vikaasia', $asia, PDO::PARAM_STR);
-
-    $lisaa->execute();
-    header("location:index.php");
+    if (empty($otsikko) || empty($asia)) {
+        echo '<div class="alert alert-danger">Täytä kentät!</div>';
+    } else {
+        $kysely = "INSERT INTO vikailmoitus (asukasID, taloyhtionID, vikaotsikko, vikaasia) 
+        VALUES (:asukasID, :taloyhtionID, :vikaotsikko, :vikaasia)";
+    
+        $lisaa = $yhteys->prepare($kysely);
+        $lisaa->bindValue(':asukasID', $asukas, PDO::PARAM_STR);
+        $lisaa->bindValue(':taloyhtionID', $taloyhtio, PDO::PARAM_STR);
+        $lisaa->bindValue(':vikaotsikko', $otsikko, PDO::PARAM_STR);
+        $lisaa->bindValue(':vikaasia', $asia, PDO::PARAM_STR);
+    
+        $lisaa->execute();
+        header("location:isannoitsijaApp.php?success=true");
+    }
 }
 ?>
 
@@ -64,7 +68,7 @@ if(isset($_POST['talleta'])){
       <h4>Tee vikailmoitus <?php echo $taloyhtionnimi; ?> taloyhtiöön</h4><br>
 
 
-    <form method="POST" action="vikailmoitusSivu.php">
+    <form method="POST" action="vikailmoitusSivuIsann.php">
 
     <div class="mb-1 mt-4" style="display: none;">
         <label for="otsikko" class="form-label"></label>
@@ -91,7 +95,7 @@ if(isset($_POST['talleta'])){
         <label for="asia" class="form-label"></label>
         <textarea type="text" class="form-control" id="yhteysAsia" placeholder="Asia" name="asia" rows="5"></textarea>
     </div>
-    <button name="talleta" id="yhteysBtn" type="submit" class="btn btn-success mt-3">Lähetä vikailmoitus</button>
+    <button name="talletaa" id="yhteysBtn" type="submit" class="btn btn-success mt-3">Lähetä vikailmoitus</button>
     </form>
 </div>
 

@@ -8,7 +8,7 @@
   background-color: #333;
   color: white;
   height: 100px; /* set the height of the footer */
-  position: fixed; /* position the footer */
+  /*position: fixed; /* position the footer TÄÄ ESTÄÄ SIVUN SCROLLAAMISEN */
   bottom: 0; /* place the footer at the bottom of the page */
   width: 100%;
 }
@@ -172,8 +172,8 @@ h3, h1 {
   .gradient-circle {
     width: 65px;
     height: 65px;
-    background: rgb(121,140,140);
-    background: radial-gradient(circle, rgba(121,140,140,1) 0%, rgba(5,20,20,1) 100%);
+    background: rgb(224,11,11);
+    background: radial-gradient(circle, rgba(224,11,11,1) 0%, rgba(181,0,0,1) 100%); 
     border-radius: 50%;
     text-align: center;
     margin: 0 auto;

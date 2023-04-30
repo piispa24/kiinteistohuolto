@@ -11,22 +11,25 @@ error_reporting(E_ALL);
 if(isset($_POST['submit'])) {
     $tyontekijasposti = $_POST['email'];
     $passwd = $_POST['password'];
-    
-    $komento = "SELECT * FROM tyontekija WHERE tyontekijasposti = '$tyontekijasposti' AND tyontekijasalasana = '$passwd' AND rooliID = 3";
-    $kirjaudu = $yhteys->query($komento);
-    $kirjaudu->execute();
-    $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
-    
-    if ($data) {
-        // user is authenticated, set session variable and redirect to the secure page
-        $_SESSION['tyojohtoemail'] = $tyontekijasposti;
-        header('Location: tyonjohtoApp.php');
-        exit;
-      } else {
-        // authentication failed, show an error message
-        echo 'Invalid email or password';
-      }
-    
+
+    if (empty($tyontekijasposti) || empty($passwd)) {
+        echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+    } else {
+        $komento = "SELECT * FROM tyontekija WHERE tyontekijasposti = '$tyontekijasposti' AND tyontekijasalasana = '$passwd' AND rooliID = 3";
+        $kirjaudu = $yhteys->query($komento);
+        $kirjaudu->execute();
+        $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data) {
+            // user is authenticated, set session variable and redirect to the secure page
+            $_SESSION['tyojohtoemail'] = $tyontekijasposti;
+            header('Location: tyonjohtoApp.php');
+            exit;
+          } else {
+            // authentication failed, show an error message
+            echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+          }    
+    }
 }
 
 if(isset($_SESSION['tyojohtoemail'])) {
