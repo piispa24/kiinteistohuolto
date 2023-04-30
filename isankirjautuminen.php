@@ -10,26 +10,30 @@ error_reporting(E_ALL);
 if(isset($_POST['submit'])) {
     $isannoitsijasposti = $_POST['email'];
     $passwd = $_POST['password'];
-    
-    $komento = "SELECT * FROM isannoitsija WHERE isannoitsijasposti = '$isannoitsijasposti' AND isannoitsijasalasana = '$passwd'";
-    $kirjaudu = $yhteys->query($komento);
-    $kirjaudu->execute();
-    $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
-    
-    if ($data) {
-        // user is authenticated, set session variable and redirect to the secure page
-        $_SESSION['isannsposti'] = $isannoitsijasposti;
-        header('Location: isannoitsijaApp.php');
-        exit;
-      } else {
-        // authentication failed, show an error message
-        echo 'Invalid email or password';
-      }
+
+    if (empty($isannoitsijasposti) || empty($passwd)) {
+        echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+    } else {
+        $komento = "SELECT * FROM isannoitsija WHERE isannoitsijasposti = '$isannoitsijasposti' AND isannoitsijasalasana = '$passwd'";
+        $kirjaudu = $yhteys->query($komento);
+        $kirjaudu->execute();
+        $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data) {
+            // user is authenticated, set session variable and redirect to the secure page
+            $_SESSION['isannsposti'] = $isannoitsijasposti;
+            header('Location: isannoitsijaApp.php');
+            exit;
+        } else {
+            // authentication failed, show an error message
+            echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+        }
+    }
 }
 
 if(isset($_SESSION['isannsposti'])) {
     header("location: index.php");
-  }
+}
 ?>
 
 

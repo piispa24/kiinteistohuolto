@@ -33,17 +33,21 @@ if(isset($_POST['talleta'])){
     $otsikko = $_POST['otsikko'];
     $asia = $_POST['asia'];
 
-    $kysely = "INSERT INTO vikailmoitus (asukasID, taloyhtionID, vikaotsikko, vikaasia) 
-    VALUES (:asukasID, :taloyhtionID, :vikaotsikko, :vikaasia)";
-
-    $lisaa = $yhteys->prepare($kysely);
-    $lisaa->bindValue(':asukasID', $asukas, PDO::PARAM_STR);
-    $lisaa->bindValue(':taloyhtionID', $taloyhtio, PDO::PARAM_STR);
-    $lisaa->bindValue(':vikaotsikko', $otsikko, PDO::PARAM_STR);
-    $lisaa->bindValue(':vikaasia', $asia, PDO::PARAM_STR);
-
-    $lisaa->execute();
-    header("location:index.php");
+    if (empty($otsikko) || empty($asia)) {
+        echo '<div class="alert alert-danger">Täytä kentät!</div>';
+    } else {
+        $kysely = "INSERT INTO vikailmoitus (asukasID, taloyhtionID, vikaotsikko, vikaasia) 
+        VALUES (:asukasID, :taloyhtionID, :vikaotsikko, :vikaasia)";
+    
+        $lisaa = $yhteys->prepare($kysely);
+        $lisaa->bindValue(':asukasID', $asukas, PDO::PARAM_STR);
+        $lisaa->bindValue(':taloyhtionID', $taloyhtio, PDO::PARAM_STR);
+        $lisaa->bindValue(':vikaotsikko', $otsikko, PDO::PARAM_STR);
+        $lisaa->bindValue(':vikaasia', $asia, PDO::PARAM_STR);
+    
+        $lisaa->execute();
+        header("location:vikailmoitusApp.php");
+    }
 }
 ?>
 
@@ -52,32 +56,37 @@ if(isset($_POST['talleta'])){
     <?php if(isset($_SESSION['sposti'])): ?>
         <p><a href=vikailmoitusApp.php class="btn btn-success">Takaisin</a></p>
     <?php endif; ?>
-<h4>Tee vikailmoitus yhtiöön</h4><br>
+
+    <h4>Tee vikailmoitus yhtiöön</h4><br>
 
     <form method="POST" action="vikailmoitusSivu.php">
 
-    <div class="mb-1 mt-4" style="display: none;">
-        <label for="otsikko" class="form-label"></label>
-        <input type="hidden" class="form col-sm-4" placeholder="" name="asukas" value="<?php echo $asukasID; ?>">
-    </div>
+        <div class="mb-1 mt-4" style="display: none;">
+            <label for="otsikko" class="form-label"></label>
+            <input type="hidden" class="form col-sm-4" placeholder="" name="asukas" value="<?php echo $asukasID; ?>">
+        </div>
 
-    <div class="mb-1 mt-4" style="display: none;">
-        <label for="otsikko" class="form-label"></label>
-        <input type="hidden" class="form col-sm-4" placeholder="" name="taloyhtio" value="<?php echo $taloyhtionID; ?>">
-    </div>
+        <div class="mb-1 mt-4" style="display: none;">
+            <label for="otsikko" class="form-label"></label>
+            <input type="hidden" class="form col-sm-4" placeholder="" name="taloyhtio" value="<?php echo $taloyhtionID; ?>">
+        </div>
 
-    <h5>Otsikko:</h5>  
-    <div class="mb-4 mt-4">
-        <label for="otsikko" class="form-label"></label>
-        <input type="text" class="form col-sm-4" id="yhteysOtsikko" placeholder="" name="otsikko">
-    </div>
-    <h5>Asia:</h5> 
-    <div class="mb-3">
-        <label for="asia" class="form-label"></label>
-        <textarea type="text" class="form-control" id="yhteysAsia" placeholder="Asia" name="asia" rows="5"></textarea>
-    </div>
-    <button name="talleta" id="yhteysBtn" type="submit" class="btn btn-success mt-3">Lähetä vikailmoitus</button>
+        <h5>Otsikko:</h5>  
+        <div class="mb-4 mt-4">
+            <label for="otsikko" class="form-label"></label>
+            <input type="text" class="form col-sm-4" id="yhteysOtsikko" placeholder="" name="otsikko">
+        </div>
+
+        <h5>Asia:</h5> 
+        <div class="mb-3">
+            <label for="asia" class="form-label"></label>
+            <textarea type="text" class="form-control" id="yhteysAsia" placeholder="Asia" name="asia" rows="5"></textarea>
+        </div>
+
+        <button name="talleta" id="yhteysBtn" type="submit" class="btn btn-success mt-3">Lähetä vikailmoitus</button>
+
     </form>
 </div>
 
 <?php require "footer.php"; ?>
+
