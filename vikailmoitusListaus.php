@@ -3,7 +3,7 @@ session_start();
 require "header.php"; 
 ?>
 
-<div class="container">
+<div class="container mt-5">
         <br>
       <h3>Vikailmoitukset</h3>
       <br>

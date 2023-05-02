@@ -23,7 +23,7 @@ if(!isset($_SESSION['sposti'])){
       </div>
 
       <div class="col-sm-6 p-5 tyontekijaRivi">
-        <p><a class="underline btn btn-danger btn-large" href="#######">Katso omat tiedot</a></p>
+        <p><a class="underline btn btn-danger btn-large" href="asukasTiedot.php">Katso omat tiedot</a></p>
       </div>
   </div>
   

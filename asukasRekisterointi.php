@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
       <label for="floatingInput">Asukasnimi</label>
     </div>
     <div class="form-floating">
-      <input name="rooli" type="text" class="form-control inputSarake mb-2" id="floatingInput" value="1">
+      <input name="rooli" type="hidden" class="form-control inputSarake mb-2" id="floatingInput" value="1">
       <label for="floatingInput">Rooli</label>
     </div>
     <div class="form-floating">

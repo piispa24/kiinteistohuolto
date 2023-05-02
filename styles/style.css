@@ -241,7 +241,7 @@ body {
 
 .underline {
   text-decoration: none;
-  border: solid 3px black;
+  border: solid 2px black;
   border-radius: 10px;
 }
 /* Yhteydenotto Sivu ja kirjautumissivu*/
@@ -315,4 +315,9 @@ body {
 .pyoristys {
   border-radius: 30px!important;
   
+}
+
+#logo {
+  height: 110px;
+  width: 330px;
 }
