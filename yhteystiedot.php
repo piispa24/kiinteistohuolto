@@ -1,8 +1,8 @@
 <?php require "header.php"; ?>
 
 
-<div class="container-fluid container-index vh-100">
-    <div class="container p-5">
+<div class="container-fluid container-index vh-100 p-5">
+    <div class="container p-5 pyoristys">
 
         <div class="row mb-4">
             <div class="col-sm-12 muutext">

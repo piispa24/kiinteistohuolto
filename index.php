@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col-sm-6 p-5 text-white ">
       <h4 class="">24h PÄIVYSTYS • 050 2223 344</h3>
-      <p><a class="underline btn btn-danger btn-large" href="contact.php">Ota yhteyttä</a></p>
+      <p><a class="btn btn-danger btn-large" href="contact.php">Ota yhteyttä</a></p>
     </div>
     <div class="col-sm-6 p-0">
     </div>

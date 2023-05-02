@@ -8,7 +8,7 @@ if(!isset($_SESSION['isannsposti'])){
 ?>
 
 <div class="container-fluid p-0 container-paneeli">
-  <div class="container">
+  
     <!-- Alert jos vikailmoituksen jättö onnistui. Hakee successin vikailmoitusSivuIsann.php:sta -->
     <?php if(isset($_GET['success'])): ?>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -31,7 +31,7 @@ if(!isset($_SESSION['isannsposti'])){
         </div>
     </div>
   </div>
-</div>
+
 
 
 

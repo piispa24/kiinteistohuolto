@@ -1,5 +1,6 @@
 <?php require "header.php"; ?>
-<?php 
+<?php require "connect.php"; ?>
+<?php
 
     if(isset($_POST['talleta'])){
         $nimi = $_POST['nimi'];
@@ -17,18 +18,17 @@
         $lisaa->bindValue(':yhtpuhnro', $puhnro, PDO::PARAM_STR);
         $lisaa->bindValue(':yhtsposti', $email, PDO::PARAM_STR);
         $lisaa->execute();
+        
         header("location:index.php");
     }
     
 
 ?>
 
-<div class="container-fluid container-index vh-100">
-    <div class="container">
-        <div class="container-fluid col-sm-12 ">
-        <h4>Ota yhteys täyttämällä lomake ja sinuun ollaan yhteydessä</h4>
-        </div>
-        <div id="contactBg" class="container mt-5 bg-light p-5">
+<div class="container-fluid container-index vh-100 p-5">
+    <div class="container-fluid">
+        
+        <div id="contactBg" class="container bg-light p-5">
             <h5>Yhteystiedot:</h5>
             <form id="yhteydenottoLomake" method="POST" action="contact.php">
             <div class="mb-1">

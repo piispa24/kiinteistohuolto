@@ -1,6 +1,6 @@
 <?php require "header.php"; ?>
 
-<div class="container">
+<div class="container p-5 m-5">
         <br>
         <p><a href=tyonjohtoApp.php class="btn btn-success">Takaisin</a></p>
       <h3>Työntekijän status</h3>

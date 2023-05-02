@@ -7,7 +7,7 @@ if(!isset($_SESSION['email'])){
 ?>
 
 <div class="container-fluid p-0 container-paneeli">
-  <div class="container">
+  
     <div class="row">
         <div class="col-sm-6 p-5 tyontekijaRivi">
           <p><a class="underline btn btn-danger btn-large" href="vikailmoitusListaus.php">Katso vikailmoitukset</a></p>
@@ -16,7 +16,7 @@ if(!isset($_SESSION['email'])){
         <div class="col-sm-6 p-5 tyontekijaRivi">
           <p><a class="underline btn btn-danger btn-large" href="#####">Katso omat työtehtävät</a></p>
         </div>
-    </div>
+    
   </div>
 </div>
 

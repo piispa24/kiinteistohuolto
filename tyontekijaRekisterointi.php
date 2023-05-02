@@ -54,7 +54,7 @@ if(isset($_POST['submit'])){
       <label for="floatingPassword">Salasana</label>
     </div>
     <div class="form-floating">
-      <input name="kaytettavyys" type="text" class="form-control inputSarake mb-2" id="floatingInput" value="3">
+      <input name="kaytettavyys" type="hidden" class="form-control inputSarake mb-2" id="floatingInput" value="3">
       <label for="floatingPassword">Käytettävyys</label>
     </div>
     <div class="form-floating">

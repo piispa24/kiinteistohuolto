@@ -241,6 +241,8 @@ body {
 
 .underline {
   text-decoration: none;
+  border: solid 3px black;
+  border-radius: 10px;
 }
 /* Yhteydenotto Sivu ja kirjautumissivu*/
 #yhteysNimi, #yhteysEmail, #yhteysPuhelinnro, #yhteysOtsikko, #yhteysAsia, #vikaAsia, #vikaOtsikko, #kirjautuminenPsw, #kirjautuminenEmail {
@@ -301,4 +303,16 @@ body {
   padding: 20px;
   font-size: 30px;
   text-align: center;
+}
+
+.centerDiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pyoristys {
+  border-radius: 30px!important;
+  
 }

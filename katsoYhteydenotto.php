@@ -3,7 +3,7 @@ session_start();
 require "header.php"; 
 ?>
 
-<div class="container">
+<div class="container mt-5 p-3">
         <br>
       <h3>Yhteydenotot</h3>
       <br>

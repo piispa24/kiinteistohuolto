@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
 
 
-<div class="container-fluid p-0 container-paneeli">
+<div class="container-fluid p-0 container-paneeli p-5">
 <?php
 if(isset($_POST['submit'])) {
     $asukassposti = $_POST['email'];
