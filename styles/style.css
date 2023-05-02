@@ -241,12 +241,12 @@ body {
 
 .underline {
   text-decoration: none;
-  border: solid 2px black;
+  border: solid 1px black;
   border-radius: 10px;
 }
 /* Yhteydenotto Sivu ja kirjautumissivu*/
 #yhteysNimi, #yhteysEmail, #yhteysPuhelinnro, #yhteysOtsikko, #yhteysAsia, #vikaAsia, #vikaOtsikko, #kirjautuminenPsw, #kirjautuminenEmail {
-  border: 3px solid rgb(0, 0, 0) !important;
+  border: 1px solid rgb(0, 0, 0) !important;
   border-radius: 20px;
   padding: 10px;
 }
@@ -257,14 +257,14 @@ body {
 }
 
 .inputSarake {
-  border: 3px solid lightgreen !important;
+  border: 1px solid black !important;
   border-radius: 20px;
   padding: 10px;
 }
 
 .inputBg{
   border-radius: 30px !important;
-  border: 3px solid rgb(194, 62, 73) !important;
+  
 }
 
 body {
@@ -283,8 +283,8 @@ body {
 .gradient-circle {
   width: 65px;
   height: 65px;
-  background: rgb(224,11,11);
-  background: radial-gradient(circle, rgba(224,11,11,1) 0%, rgba(181,0,0,1) 100%); 
+  background: rgb(123, 255, 0);
+  background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%); 
   border-radius: 50%;
   text-align: center;
   margin: 0 auto;
@@ -320,4 +320,8 @@ body {
 #logo {
   height: 110px;
   width: 330px;
+}
+
+.valkTekst {
+  color: white;
 }
