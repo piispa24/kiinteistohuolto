@@ -2,15 +2,10 @@
 
 
 <div class="container-fluid container-index vh-100 p-5">
-    
 
-        <div class="row mb-4">
-            <div class="col-sm-12 muutext">
-            
-            </div>
-        </div>
+<div class="container" style="background-color:transparent">
 
-        <div class="row">
+        <div class="row mt-5">
 
             <div class="col-sm-4 text-center muutext">
                 <div class="gradient-circle"></div><br>
@@ -30,7 +25,6 @@
                 <h5 class="valkTekst">Ma-pe klo 8:00-15:00<br>La klo 8:00-11.00</h5>
                 <p></p>
             </div>
-
         </div>
 
         <div class="row">
@@ -52,8 +46,8 @@
                 <h3 class="valkTekst"><strong>Sähköposti</strong></h3>
                 <h5 class="valkTekst">piispanenlonnberg@kiinteistohuolto.com</h5>
             </div>
-
         </div>
+</div>
 
    
 </div>

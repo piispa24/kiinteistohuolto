@@ -6,6 +6,20 @@
 </footer>
 -->
 
+<footer class="container-fluid bg-dark text-white py-4">
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <p>Kiinteistöhuolto Piispanen & Lönnberg</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Facebook</a></li>
+        <li class="list-inline-item"><a href="#">Twitter</a></li>
+        <li class="list-inline-item"><a href="#">Instagram</a></li>
+      </ul>
+      <p>&copy; 2023 Piispanen & Lönnberg. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
