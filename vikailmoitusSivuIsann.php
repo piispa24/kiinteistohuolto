@@ -1,10 +1,12 @@
 <?php session_start();
 require "connect.php";
 require "header.php"; 
-if(!isset($_SESSION['email']) && (!isset($_SESSION['sposti'])) && (!isset($_SESSION['isannsposti'])) && (!isset($_SESSION['tyojohtoemail']))){
+
+if(!isset($_SESSION['isannsposti'])){
   header("Location: isankirjautuminen.php");
   exit;
 }
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -80,11 +82,28 @@ if(isset($_POST['talletaa'])){
         <input type="hidden" class="form col-sm-4" placeholder="" name="taloyhtio" value="<?php echo $taloyhtioID; ?>">
 
     </div>
-    <h5>AsukasID:</h5>  
-    <div class="mb-4 mt-4">
-        <label for="otsikko" class="form-label"></label>
-        <input type="text" class="form col-sm-4" id="yhteysOtsikko" placeholder="" name="asukas">
+    <h5>Asukkaan nimi:</h5>  
+    <div class="mb-4">
+        <label for="asukas" class="form-label"></label>
+        <select class="form-select" id="asukas" name="asukas">
+            <?php
+            // Listaa pelkästään asukkaat jotka kuuluvat sisäänkirjautuneen isännöitsijän taloyhtiöön
+            // Isännöitsijän taloyhtiöID haettu sessiosta 
+            // WHEREssä vertaillaan asukkaan taloyhtiöIDtä isännöitsijän taloyhtioIDseen
+            $asukkaatQuery = "SELECT *, isannoitsija.taloyhtioID
+            FROM asukas
+            INNER JOIN isannoitsija
+            ON asukas.taloyhtioID = isannoitsija.taloyhtioID
+            WHERE asukas.taloyhtioID = $taloyhtioID";
+
+            $asukkaatResult = $yhteys->query($asukkaatQuery);
+            while ($asukas = $asukkaatResult->fetch(PDO::FETCH_ASSOC)) {
+                echo '<option value="'.$asukas['asukasID'].'">'.$asukas['asukasnimi'].'</option>';
+            }
+            ?>
+        </select>
     </div>
+
     <h5>Otsikko:</h5>  
     <div class="mb-4 mt-4">
         <label for="otsikko" class="form-label"></label>

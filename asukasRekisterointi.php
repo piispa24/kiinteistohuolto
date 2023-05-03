@@ -1,8 +1,34 @@
-<?php require "header.php"; ?>
+<?php session_start();
+require "header.php"; 
+require "connect.php";
 
-<?php require "connect.php"; ?>
+if(!isset($_SESSION['isannsposti'])){
+  header("Location: isankirjautuminen.php");
+  exit;
+}
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 
 <?php
+
+// Hakee isännöitsijän isannoitsijaIDn tietokannasta
+$email = $_SESSION['isannsposti']; // Valitsee isännöitsijän session
+$query = "SELECT isannoitsija.isannoitsijaID, taloyhtio.taloyhtioID, taloyhtio.taloyhtionnimi, taloyhtio.talotyyppiID, taloyhtio.osoite 
+            FROM isannoitsija 
+            INNER JOIN taloyhtio ON isannoitsija.taloyhtioID = taloyhtio.taloyhtioID 
+            WHERE isannoitsija.isannoitsijasposti = :isannoitsijasposti";
+
+$haku = $yhteys->prepare($query);
+$haku->bindParam(':isannoitsijasposti', $email);
+$haku->execute();
+$result = $haku->fetch(PDO::FETCH_ASSOC);
+
+// Esitäytä formin kentät
+$taloyhtioID = $result['taloyhtioID'];
+$taloyhtionnimi = $result['taloyhtionnimi'];
 
 if(isset($_POST['submit'])){
   if($_POST['nimi'] == '' OR $_POST['rooli'] == '' OR $_POST['email'] == '' OR $_POST['password'] == '' OR $_POST['puhelin'] == '' OR $_POST['taloyhtio'] == '' OR $_POST['huoneisto'] == ''){
@@ -40,7 +66,7 @@ if(isset($_POST['submit'])){
     <?php if(isset($_SESSION['isannsposti'])): ?>
       <p><a href=isannoitsijaApp.php class="btn btn-success">Takaisin</a></p>
   <?php endif; ?>
-  <h1 class="h3 mb-3 fw-normal text-center">Lisää asukas</h1>
+  <h1 class="h3 mb-3 fw-normal text-center">Lisää asukas taloyhtiöön <?php echo $taloyhtionnimi?></h1>
     <div class="form-floating">
       <input name="nimi" type="text" class="form-control inputSarake mb-2" id="floatingInput">
       <label for="floatingInput">Asukasnimi</label>
@@ -62,8 +88,8 @@ if(isset($_POST['submit'])){
       <label for="floatingPassword">Puhelinnumero</label>
     </div>
     <div class="form-floating">
-      <input name="taloyhtio" type="text" class="form-control inputSarake mb-2" id="floatingInput">
-      <label for="floatingInput">Taloyhtiö (1=Viiriäinen)</label>
+      <input name="taloyhtio" value="<?php echo $taloyhtioID; ?>" placeholder="PIILOTETAAN MYÖHEMMIN" type="text" class="form-control inputSarake mb-2" id="floatingInput">
+      <label for="floatingInput">PIILOTETAAN MYÖHEMMIN</label>
     </div>
     <div class="form-floating">
       <input name="huoneisto" type="text" class="form-control inputSarake mb-2" id="floatingInput">
