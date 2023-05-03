@@ -14,8 +14,6 @@ error_reporting(E_ALL);
 
 <?php
 
-// Hakee taloyhtion nimen
-
 // Hakee isännöitsijän isannoitsijaIDn tietokannasta
 $email = $_SESSION['isannsposti']; // Valitsee isännöitsijän session
 $query = "SELECT isannoitsija.isannoitsijaID, taloyhtio.taloyhtioID, taloyhtio.taloyhtionnimi, taloyhtio.talotyyppiID, taloyhtio.osoite 

@@ -16,12 +16,14 @@ require "header.php";
         <p><a href=tyontekijaApp.php class="btn btn-success">Takaisin</a></p>
       <?php endif; ?>
       
+  <div class="table-responsive">
    <table class="table table-striped">
       <tr>
          <th>Ilmoittaja</th>
-         <th>Osoite</th>
-         <th>Vikaotsikko</th>
-         <th>Vika asia</th>
+         <th>Taloyhtiö</th>
+         <th>Huoneisto</th>
+         <th>Otsikko</th>
+         <th>Sisältö</th>
          <th></th>
       </tr>
         
@@ -37,9 +39,10 @@ require "header.php";
                     <tr>                    
                       <td><?php echo $vika['Asukasnimi']; ?> </td>
                       <td><?php echo $vika['Osoite']; ?> </td>
+                      <td><?php echo $vika['Huoneisto']; ?> </td>
                       <td><?php echo $vika['Vikaotsikko']; ?> </td>
                       <td><?php echo $vika['Vikaasia']; ?> </td>
-                      <td><p><a href="###" class="btn btn-warning">Siirrä omalle listalle</a></p> </td>
+                      <td><p><a href="###" class="btn btn-warning">Kuittaa itselle</a></p> </td>
                     </tr>
                     
                     <?php  
@@ -62,6 +65,7 @@ require "header.php";
             <th></th>
             <th></th>
     </table>
-   </div>
+  </div>
+</div>
 
 <?php require "footer.php"; ?>

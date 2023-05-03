@@ -9,7 +9,14 @@ if(!isset($_SESSION['email'])){
 ?>
 <?php
 $email = $_SESSION['email'];
-$query = "SELECT *, asukas.asukasnimi, taloyhtio.taloyhtionnimi, tyontekija.tyontekijasposti FROM vikailmoitus INNER JOIN taloyhtio ON vikailmoitus.taloyhtionID = taloyhtio.taloyhtioID INNER JOIN asukas ON vikailmoitus.asukasID = asukas.asukasID INNER JOIN tyontekija ON vikailmoitus.tyontekijaID = tyontekija.tyontekijaID WHERE tyontekijasposti = :tyontekijasposti";
+$query = "SELECT *, asukas.asukasnimi, taloyhtio.taloyhtionnimi, tyontekija.tyontekijasposti 
+FROM vikailmoitus 
+INNER JOIN taloyhtio 
+ON vikailmoitus.taloyhtionID = taloyhtio.taloyhtioID 
+INNER JOIN asukas ON vikailmoitus.asukasID = asukas.asukasID 
+INNER JOIN tyontekija ON vikailmoitus.tyontekijaID = tyontekija.tyontekijaID 
+WHERE tyontekijasposti = :tyontekijasposti";
+
 $stmt = $yhteys->prepare($query);
 $stmt->bindParam(':tyontekijasposti', $email);
 $stmt->execute();
