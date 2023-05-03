@@ -18,18 +18,22 @@ if(!isset($_SESSION['isannsposti'])){
     <?php endif; ?>
 
       <div class="row">
-        <div class="col-sm-6 p-5 tyontekijaRivi">
+        <div class="col-sm-12 p-5 tyontekijaRivi">
           <p>
             <a class="underline btn btn-danger btn-large" href="vikailmoitusSivuIsann.php">Tee vikailmoitus</a>
           </p>
       </div>
+      </div>
 
-        <div class="col-sm-6 p-5 tyontekijaRivi">
+      <div class="row">
+      <div class="col-sm-12 p-3 tyontekijaRivi">
           <p>
             <a class="underline btn btn-danger btn-large" href="asukasRekisterointi.php">Lisää asukas</a>
           </p>
         </div>
-    </div>
+      </div>
+
+
   </div>
 
 

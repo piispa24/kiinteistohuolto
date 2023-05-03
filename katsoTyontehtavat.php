@@ -19,7 +19,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container p-5 m-5">
   <br>
   <p><a href=tyontekijaApp.php class="btn btn-success">Takaisin</a></p>
-  <h3>Omat tiedot</h3>
+  <h3>Omat tehtävät</h3>
   <br>
       
   <table class="table table-striped">

@@ -18,14 +18,17 @@ if(!isset($_SESSION['sposti'])){
 <?php endif; ?>
 
   <div class="row">
-      <div class="col-sm-6 p-5 tyontekijaRivi">
+      <div class="col-sm-12 p-5 tyontekijaRivi">
         <p><a class="underline btn btn-danger btn-large" href="vikailmoitusSivu.php">Tee vikailmoitus</a></p>
       </div>
-
-      <div class="col-sm-6 p-5 tyontekijaRivi">
+  </div>
+  <div class="row">
+  <div class="col-sm-12 p-3 tyontekijaRivi">
         <p><a class="underline btn btn-danger btn-large" href="asukasTiedot.php">Katso omat tiedot</a></p>
       </div>
   </div>
+
+
   
 
 

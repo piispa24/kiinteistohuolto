@@ -40,7 +40,7 @@ session_start();
             <a class="nav-link" href="yhteystiedot.php">YHTEYSTIEDOT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="referenssit.php">REFERENSSIT</a>
+            <a class="nav-link" href="referenssit.php">MEISTÄ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.php">OTA YHTEYTTÄ</a>

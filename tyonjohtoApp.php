@@ -10,23 +10,30 @@ if(!isset($_SESSION['tyojohtoemail'])){
 <div class="container-fluid p-0 container-paneeli">
 
   <div class="row">
-    <div class="col-sm-6 p-5 tyontekijaRivi">
+    <div class="col-sm-12 pt-5 tyontekijaRivi">
       <p><a class="underline btn btn-danger btn-large" href="tyonjohtoVikalistaus.php">Katso vikailmoitukset</a></p>
     </div>
-    <div class="col-sm-6 p-5 tyontekijaRivi">
+  </div>
+    <div class="row">
+    <div class="col-sm-12 p-3 tyontekijaRivi">
       <p><a class="underline btn btn-danger btn-large" href="tyontekijaStatus.php">Katso työntekijän status</a></p>
     </div>
-  </div>
+    </div>
+
+
   <div class="row tyontekijaRivi">
-  <div class="col-sm-6 p-5 tyontekijaRivi">
+  <div class="col-sm-12 p-3 tyontekijaRivi">
       <p><a class="underline btn btn-danger btn-large" href="katsoYhteydenotto.php">Katso uudet yhteydenotot</a></p>
     </div>
-    <div class="col-sm-6 p-5 tyontekijaRivi">
+      </div>
+
+    <div class="row">
+    <div class="col-sm-12 p-3 tyontekijaRivi">
       <p><a class="underline btn btn-danger btn-large" href="tyontekijaRekisterointi.php">Lisää työntekijä</a></p>
     </div>
-  </div>
-  </div>
-</div>
+    </div>
+
+
 </div>
 
 
