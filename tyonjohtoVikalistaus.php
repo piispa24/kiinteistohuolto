@@ -3,7 +3,7 @@ session_start();
 require "header.php"; 
 ?>
 
-<div class="container mt-5 p-5">
+<div class="container mt-5">
         <br>
       <h3>Vikailmoitukset</h3>
       <br>
@@ -16,7 +16,8 @@ require "header.php";
         <p><a href=tyontekijaApp.php class="btn btn-success">Takaisin</a></p>
       <?php endif; ?>
       
-   <table class="table table-striped">
+  <div class="table-responsive">
+  <table class="table table-striped">
       <tr>
          <th>Ilmoittaja</th>
          <th>Osoite</th>
@@ -91,6 +92,8 @@ require "header.php";
             <th></th>
             <th></th>
     </table>
+  </div>
+ 
    </div>
 
 <?php require "footer.php"; ?>

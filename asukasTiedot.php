@@ -23,13 +23,13 @@ $taloyhtionimi = $result['taloyhtionnimi'];
 $huoneisto = $result['huoneisto'];
 ?>
 
-<div class="container p-5 m-5">
+<div class="container mt-5">
         <br>
         <p><a href=vikailmoitusApp.php class="btn btn-success">Takaisin</a></p>
       <h3>Omat tiedot</h3>
       <br>
-      
-   <table class="table table-striped">
+  <div class="table-responsive">
+  <table class="table table-striped">
       <tr>
          <th>Nimi</th>
          <th>Puhelin</th>
@@ -37,25 +37,19 @@ $huoneisto = $result['huoneisto'];
          <th>Osoite</th>
          <th>Huoneisto</th>
       </tr>
-        
-            <?php
-           
-                    ?>
-                    <tr>                    
-                      <td><?php echo $asukasID; ?> </td>
-                      <td><?php echo $asukaspuhnro; ?> </td>
-                      <td><?php echo $asukassposti; ?> </td>
-                      <td><?php echo $taloyhtionimi; ?> </td>
-                      <td><?php echo $huoneisto; ?> </td>
-                    </tr>
-                    
-                    <?php  
-                  
-                
-              
-            ?>
+      <?php
+        ?>
+        <tr>                    
+          <td><?php echo $asukasID; ?> </td>
+          <td><?php echo $asukaspuhnro; ?> </td>
+          <td><?php echo $asukassposti; ?> </td>
+          <td><?php echo $taloyhtionimi; ?> </td>
+          <td><?php echo $huoneisto; ?> </td>
+        </tr>
+      <?php  
+        ?>
     </table>
-   </div>
-   
+  </div>
+</div>
 
 <?php require "footer.php"; ?>

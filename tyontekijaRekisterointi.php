@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 
 ?>
 
-<main class="form-signin w-50 m-auto">
+<main class="form-signin m-auto">
 
   <form class="bg-light p-3 inputBg mt-3" method="POST" action="tyontekijaRekisterointi.php">
   <h3 class="h3 fw-normal text-center">Lisää työntekijä</h3>

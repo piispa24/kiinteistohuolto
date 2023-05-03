@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
 
 ?>
 
-<main class="form-signin w-50 m-auto">
+<main class="form-signin m-auto">
 
   <form class="bg-light mt-3 p-5 inputBg" method="POST" action="asukasRekisterointi.php">
     <!-- Vie takaisin isännöitsijän appiin -->

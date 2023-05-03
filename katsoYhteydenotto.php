@@ -3,19 +3,22 @@ session_start();
 require "header.php"; 
 ?>
 
-<div class="container mt-5 p-3">
-        <br>
-      <h3>Yhteydenotot</h3>
-      <br>
-      <!--Näyttää tyonjohtoappiin vievän napin kun sessio on tyojohtoemail-->
-      <?php if(isset($_SESSION['tyojohtoemail'])): ?>
-        <p><a href=tyonjohtoApp.php class="btn btn-success">Takaisin</a></p>
-      <?php endif; ?>
-            <!--Näyttää tyontekijäappiin vievän napin kun sessio on email-->
-      <?php if(isset($_SESSION['email'])): ?>
-        <p><a href=tyontekijaApp.php class="btn btn-success">Takaisin</a></p>
-      <?php endif; ?>
+<div class="container mt-5">
+  <br>
+  <h3>Yhteydenotot</h3>
+  <br>
+
+  <!--Näyttää tyonjohtoappiin vievän napin kun sessio on tyojohtoemail-->
+  <?php if(isset($_SESSION['tyojohtoemail'])): ?>
+    <p><a href=tyonjohtoApp.php class="btn btn-success">Takaisin</a></p>
+  <?php endif; ?>
+
+  <!--Näyttää tyontekijäappiin vievän napin kun sessio on email-->
+  <?php if(isset($_SESSION['email'])): ?>
+    <p><a href=tyontekijaApp.php class="btn btn-success">Takaisin</a></p>
+  <?php endif; ?>
       
+<div class="table-responsive">
    <table class="table table-striped">
       <tr>
          <th>Ilmoittajan nimi</th>
@@ -66,6 +69,7 @@ require "header.php";
             <th></th>
             <th></th>
     </table>
-   </div>
+  </div>
+</div>
 
 <?php require "footer.php"; ?>

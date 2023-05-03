@@ -16,36 +16,32 @@ $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="container p-5 m-5">
+<div class="container mt-4">
   <br>
   <p><a href=tyontekijaApp.php class="btn btn-success">Takaisin</a></p>
   <h3>Omat tehtävät</h3>
   <br>
-      
-  <table class="table table-striped">
-    <tr>
-      <th>Taloyhtiö</th>
-      <th>Huoneisto</th>
-      <th>Ilmoittaja</th>
-      <th>Otsikko</th>
-      <th>Asia</th>
-    </tr>
-        
-    <?php foreach ($results as $result): ?>
-      <tr>                    
-        <td><?php echo $result['taloyhtionnimi']; ?> </td>
-        <td><?php echo $result['huoneisto']; ?> </td>
-        <td><?php echo $result['asukasnimi']; ?> </td>
-        <td><?php echo $result['vikaotsikko']; ?> </td>
-        <td><?php echo $result['vikaasia']; ?> </td>
-      </tr>
-    <?php endforeach; ?>
-                
-  </table>
-</div>
 
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <th>Taloyhtiö</th>
+        <th>Huoneisto</th>
+        <th>Ilmoittaja</th>
+        <th>Otsikko</th>
+        <th>Asia</th>
+      </tr>
+      <?php foreach ($results as $result): ?>
+        <tr>                    
+          <td><?php echo $result['taloyhtionnimi']; ?> </td>
+          <td><?php echo $result['huoneisto']; ?> </td>
+          <td><?php echo $result['asukasnimi']; ?> </td>
+          <td><?php echo $result['vikaotsikko']; ?> </td>
+          <td><?php echo $result['vikaasia']; ?> </td>
+        </tr>
+      <?php endforeach; ?>                 
     </table>
-   </div>
-   
+  </div>
+</div>
 
 <?php require "footer.php"; ?>

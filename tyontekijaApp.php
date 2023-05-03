@@ -9,20 +9,16 @@ if(!isset($_SESSION['email'])){
 <div class="container-fluid p-0 container-paneeli">
   
     <div class="row">
-        <div class="col-sm-12 p-5 tyontekijaRivi">
+        <div class="col-sm-12 pt-5 tyontekijaRivi">
           <p><a class="underline btn btn-danger btn-large" href="vikailmoitusListaus.php">Katso vikailmoitukset</a></p>
         </div>
+    </div>
 
-        <div class="row">
-        <div class="col-sm-12 p-3 tyontekijaRivi">
+    <div class="row">
+        <div class="col-sm-12 pt-5 tyontekijaRivi">
           <p><a class="underline btn btn-danger btn-large" href="katsoTyontehtavat.php">Katso omat työtehtävät</a></p>
         </div>
-        </div>
-
-    
-  </div>
+    </div>
 </div>
-
-
 
 <?php require "footer.php"; ?>
