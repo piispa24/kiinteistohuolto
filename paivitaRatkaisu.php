@@ -1,63 +1,65 @@
-<?php session_start();
+<?php
+session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require "connect.php";
 require "header.php"; 
+
 if(!isset($_SESSION['email'])){
   header("Location: kirjautuminen.php");
   exit;
 }
-
-?>
-<?php
-$email = $_SESSION['email'];
-$query = "SELECT *, asukas.asukasnimi, taloyhtio.taloyhtionnimi, tyontekija.tyontekijasposti 
-FROM vikailmoitus 
-INNER JOIN taloyhtio 
-ON vikailmoitus.taloyhtionID = taloyhtio.taloyhtioID 
-INNER JOIN asukas ON vikailmoitus.asukasID = asukas.asukasID 
-INNER JOIN tyontekija ON vikailmoitus.tyontekijaID = tyontekija.tyontekijaID 
-WHERE tyontekijasposti = :tyontekijasposti";
-
-$stmt = $yhteys->prepare($query);
-$stmt->bindParam(':tyontekijasposti', $email);
-$stmt->execute();
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php
-if(isset($_POST['tallenna'])){
-    $asukas = $_POST['asukas'];
-    
+// Päivittää asian
+if(isset($_POST['talleta'])){
+    $ratkaisu = $_POST['ratkaisu'];
+    $vikailmoitusID = $_GET['vikailmoitusID'];
 
-    if (empty($otsikko) || empty($asia)) {
+    if (empty($ratkaisu)) {
         echo '<div class="alert alert-danger">Täytä kentät!</div>';
     } else {
-        $kysely = "INSERT INTO vikailmoitus (asukasID, taloyhtionID, vikaotsikko, vikaasia) 
-        VALUES (:asukasID, :taloyhtionID, :vikaotsikko, :vikaasia)";
-    
-        $lisaa = $yhteys->prepare($kysely);
-        $lisaa->bindValue(':asukasID', $asukas, PDO::PARAM_STR);
-        $lisaa->bindValue(':taloyhtionID', $taloyhtio, PDO::PARAM_STR);
-        $lisaa->bindValue(':vikaotsikko', $otsikko, PDO::PARAM_STR);
-        $lisaa->bindValue(':vikaasia', $asia, PDO::PARAM_STR);
-    
-        $lisaa->execute();
-        header("location:isannoitsijaApp.php?success=true");
+        $kysely = "UPDATE vikailmoitus SET ratkaisu = :ratkaisu WHERE vikailmoitus.vikailmoitusID = :vikailmoitusID";
+        $stmt = $yhteys->prepare($kysely);
+        $stmt->bindParam(':ratkaisu', $ratkaisu);
+        $stmt->bindParam(':vikailmoitusID', $vikailmoitusID);
+        $stmt->execute();
+        header("Location: katsoTyontehtavat.php");
     }
 }
 ?>
 
-            <div class="container">
-            <form method="POST" action="paivitaRatkaisu.php?vikailmoitusID=<?php $result['vikailmoitusID']; ?>">
-                
-                <tr>
-                    <td>Asia</td>
-                    <td><input type="text" name="km" value="<?php echo $result['vikailmoitusID']; ?>"></td>
-                </tr>
-                <tr>
-                    <td><button class="btn btn-warning" name="tallenna" type="submit">Tallenna</button></td>
-                </tr>
-            </form>
-            </div>
+<?php
+$email = $_SESSION['email'];
+$vikailmoitusID = $_GET['vikailmoitusID'];
+$query = "SELECT vikailmoitus.ratkaisu
+FROM vikailmoitus  
+WHERE vikailmoitusID = :vikailmoitusID";
+
+$stmt = $yhteys->prepare($query);
+$stmt->bindParam(':vikailmoitusID', $vikailmoitusID);
+$stmt->execute();
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+<div id="contactBg" class="container mt-5 bg-light p-5">
+    <p><a href=katsoTyontehtavat.php class="btn btn-success">Takaisin</a></p>
+
+    <form method="POST" action="">
+
+        <h5>Ratkaisu:</h5> 
+        <div class="mb-3">
+            <label for="asia" class="form-label"></label>
+            <textarea class="form-control" id="ratkaisuForm" name="ratkaisu" rows="5"><?php echo $results['ratkaisu']; ?></textarea>
+
+        </div>
+
+        <button name="talleta" id="yhteysBtn" type="submit" class="btn btn-success mt-3">Tallenna ratkaisu</button>
+
+    </form>
+</div>
     
 
 <?php require "footer.php"; ?>
