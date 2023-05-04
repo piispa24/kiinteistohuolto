@@ -4,9 +4,7 @@ if(!isset($_SESSION['email'])){
   header("Location: kirjautuminen.php");
   exit;
 }
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 ?>
 
@@ -25,31 +23,45 @@ error_reporting(E_ALL);
     </div>
     
     <!-- Työntekijän käytettävyys -->
-    <div class="row pt-5">
+
+    <div class="row ">
       <div class="col-sm-3 tyontekijaRivi">
         <form method="POST" action="kaytettavyys.php">
-          <button type="submit" name="kaytettavissa" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class']; ?>">Käytettävissä</button>
+          <div class="position-relative">
+            <button type="button" class="btn btn-large bg-light position-absolute w-100 h-100 underline"></button>
+            <button type="submit" name="kaytettavissa" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class']; ?> position-relative z-index-1">Käytettävissä</button>
+          </div>
         </form>
       </div>
 
         <div class="col-sm-3 tyontekijaRivi">
           <form method="POST" action="kaytettavyys.php">
-              <button type="submit" name="keikalla" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class2']; ?>">Keikalla</button>
+          <div class="position-relative">
+            <button type="button" class="btn btn-large bg-light position-absolute w-100 h-100 underline"></button>
+            <button type="submit" name="keikalla" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class2']; ?> position-relative z-index-1">Keikalla</button>
+          </div>
           </form>
         </div>
 
         <div class="col-sm-3 tyontekijaRivi">
           <form method="POST" action="kaytettavyys.php">
-              <button type="submit" name="tauolla" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class3']; ?>">Tauolla</button>
-          </form>
+            <div class="position-relative">
+              <button type="button" class="btn btn-large bg-light position-absolute w-100 h-100 underline"></button>
+              <button type="submit" name="tauolla" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class3']; ?> position-relative z-index-1">Tauolla</button>
+            </div>
+            </form>
         </div>
 
         <div class="col-sm-3 tyontekijaRivi">
           <form method="POST" action="kaytettavyys.php">
-              <button type="submit" name="poissa" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class4']; ?>">Poissa</button>
+            <div class="position-relative">
+              <button type="button" class="btn btn-large bg-light position-absolute w-100 h-100 underline"></button>
+              <button type="submit" name="poissa" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class4']; ?> position-relative z-index-1">Poissa</button>
+            </div>
           </form>
         </div>
     </div>
+
 </div>
 
 

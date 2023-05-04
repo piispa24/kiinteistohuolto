@@ -7,7 +7,6 @@ if(!isset($_SESSION['email'])){
   header("Location: kirjautuminen.php");
   exit;
 }
-
 if (isset($_POST['kaytettavissa'])) {
     // Button has been clicked, update the database
     $kaytettavissa = $_POST['kaytettavissa'];
@@ -64,6 +63,7 @@ if(isset($_POST['tauolla'])) {
 
     $_SESSION['button_class3'] = $button_class3; // Store the button class in a session variable
     header("Location: tyontekijaApp.php");
+
 // Check if the poissa form has been submitted
 if(isset($_POST['poissa'])) {
     $poissa = $_POST['poissa'];
