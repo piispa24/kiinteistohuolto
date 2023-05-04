@@ -37,6 +37,8 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <th>Ilmoittaja</th>
         <th>Otsikko</th>
         <th>Asia</th>
+        <th>Ratkaisu</th>
+        <th></th>
         <th></th>
       </tr>
       <?php foreach ($results as $result): ?>
@@ -46,7 +48,9 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?php echo $result['asukasnimi']; ?> </td>
           <td><?php echo $result['vikaotsikko']; ?> </td>
           <td><?php echo $result['vikaasia']; ?> </td>
+          <td><?php echo $result['ratkaisu']; ?> </td>
           <td><?php echo '<a href="paivitaRatkaisu.php?vikailmoitusID='.$result['vikailmoitusID'].'" class="btn btn-success">Ratkaisu</a>'; ?></td>
+          <td><?php echo '<a href="arkistoiVikailmoitus.php?vikailmoitusID='.$result['vikailmoitusID'].'" class="btn btn-warning">Arkistoi</a>'; ?></td>
         </tr>
       <?php endforeach; ?>                 
     </table>
