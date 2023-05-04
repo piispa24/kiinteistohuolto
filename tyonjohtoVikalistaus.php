@@ -43,32 +43,35 @@ require "header.php";
                     <td><?php echo $vika['Vikaotsikko']; ?> </td>
                     <td><?php echo $vika['Vikaasia']; ?> </td>
                     <td>
-                        <div class="dropdown">
-                            <a class="btn btn-default dropdown-toggle" href="#" id="navbarDropdownMenuLink<?php echo $vika['VikailmoitusID']; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo $vika['Tyontekijanimi']; ?>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink<?php echo $vika['VikailmoitusID']; ?>">
-                                <?php
-                                require "connect.php";
-                                // Hae työntekijä db
-                                $query = "SELECT tyontekijanimi FROM tyontekija";
-                                $result = $yhteys->query($query);
-                                // Tee jokaiselle oma li elementti
-                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                    echo '<li class="dropdown-item" onclick="updateEmployee(\'' . $row['tyontekijanimi'] . '\', ' . $vika['VikailmoitusID'] . ')">' . $row['tyontekijanimi'] . '<input type="hidden" name="tyontekijaID" value="' . $row['tyontekijaID'] . '"></li>';
-                                }
-                                ?>
-                            </ul>
-                        </div>
+                    <form method="post" action="paivitaTyontekija.php">
+                      <input type="hidden" name="VikailmoitusID" value="<?php echo $vika['VikailmoitusID']; ?>">
+                      <select name="Tyontekijanimi" onchange="this.form.submit()">
+                          <?php
+                              require "connect.php";
+                              $query = "SELECT TyontekijaID, tyontekijanimi FROM tyontekija";
+                              $result = $yhteys->query($query);
+                              
+                              
+                              echo '<option value="" ' . ($vika['Tyontekijanimi'] === null ? 'selected' : '') . '>NULL</option>';
+                              
+                            
+                              while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                  $selected = ($row['tyontekijanimi'] == $vika['Tyontekijanimi']) ? "selected" : "";
+                                  echo '<option value="' . $row['tyontekijanimi'] . '" ' . $selected . '>' . $row['tyontekijanimi'] . '</option>';
+                              }
+                          ?>
+                      </select>
+                  </form>
 
-                            <script>
-                                function updateEmployee(name, id) {
-                                    document.getElementById("navbarDropdownMenuLink" + id).innerHTML = name;
-                                    document.getElementById("selectedTyontekijaID").value = id;
-                                }
-                            </script>
-                        </td>
-                        <td><?php echo '<a href="siirraTehtava.php?tyontekijaID='.$vika['tyontekijaID'].'" class="btn btn-warning">Siirrä Tehtävä</a>'; ?></td>
+
+
+
+
+
+
+                  </td>
+                  <td>
+                      
                     </tr>
                     
                     <?php  

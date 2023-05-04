@@ -24,6 +24,7 @@ require "header.php";
          <th>Huoneisto</th>
          <th>Otsikko</th>
          <th>Sisältö</th>
+         <th>Työntekijä</th>
          <th></th>
       </tr>
         
@@ -42,6 +43,7 @@ require "header.php";
                       <td><?php echo $vika['Huoneisto']; ?> </td>
                       <td><?php echo $vika['Vikaotsikko']; ?> </td>
                       <td><?php echo $vika['Vikaasia']; ?> </td>
+                      <td><?php echo $vika['Tyontekijanimi']; ?> </td>
                       <td><p><a href="###" class="btn btn-warning">Kuittaa itselle</a></p> </td>
                     </tr>
                     
@@ -60,6 +62,8 @@ require "header.php";
                     print($rivit->rowCount());
                 ?>
             </th>
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
