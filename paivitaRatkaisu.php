@@ -23,6 +23,29 @@ $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<?php
+if(isset($_POST['tallenna'])){
+    $asukas = $_POST['asukas'];
+    
+
+    if (empty($otsikko) || empty($asia)) {
+        echo '<div class="alert alert-danger">Täytä kentät!</div>';
+    } else {
+        $kysely = "INSERT INTO vikailmoitus (asukasID, taloyhtionID, vikaotsikko, vikaasia) 
+        VALUES (:asukasID, :taloyhtionID, :vikaotsikko, :vikaasia)";
+    
+        $lisaa = $yhteys->prepare($kysely);
+        $lisaa->bindValue(':asukasID', $asukas, PDO::PARAM_STR);
+        $lisaa->bindValue(':taloyhtionID', $taloyhtio, PDO::PARAM_STR);
+        $lisaa->bindValue(':vikaotsikko', $otsikko, PDO::PARAM_STR);
+        $lisaa->bindValue(':vikaasia', $asia, PDO::PARAM_STR);
+    
+        $lisaa->execute();
+        header("location:isannoitsijaApp.php?success=true");
+    }
+}
+?>
+
             <div class="container">
             <form method="POST" action="paivitaRatkaisu.php?vikailmoitusID=<?php $result['vikailmoitusID']; ?>">
                 
