@@ -23,22 +23,17 @@ require "connect.php";
                 
                 
                 if ($data) {
-                    // user is authenticated, verify the password
-                    if (password_verify($passwd, $data['tyontekijasalasana'])) {
-                        // password matches, set session variable and redirect to the secure page
-                        $_SESSION['tyojohtoemail'] = $tyontekijasposti;
-                        header('Location: tyonjohtoApp.php');
-                        exit;
-                    } else {
-                        // password does not match, show an error message
-                        echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
-                    }
+                    // user is authenticated, set session variable and redirect to the secure page
+                    $_SESSION['tyojohtoemail'] = $tyontekijasposti;
+                    header('Location: tyonjohtoApp.php');
+                    exit;
                 } else {
                     // authentication failed, show an error message
                     echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
-                }
+                }    
             }
         }
+
         if(isset($_SESSION['tyojohtoemail'])) {
             header("location: index.php");
         }
