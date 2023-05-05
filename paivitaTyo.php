@@ -1,9 +1,14 @@
 <?php
-session_start();
+
 require "connect.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+if(!isset($_SESSION['email'])){
+    header("Location: tyokirjautuminen.php");
+    exit;
+}
 
 if(isset($_POST['kuittaa'])) {
 $vikaID = $_POST['vikailmoitusID'];

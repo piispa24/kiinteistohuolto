@@ -1,8 +1,11 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 require "connect.php";
+
+if(!isset($_SESSION['email'])){
+    header("Location: tyokirjautuminen.php");
+    exit;
+}
 
 if (isset($_POST['VikailmoitusID']) && isset($_POST['Tyontekijanimi'])) {
     $vikaID = $_POST['VikailmoitusID'];
