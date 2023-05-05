@@ -1,4 +1,4 @@
-<?php session_start();
+<?php 
 require "header.php"; 
 if(!isset($_SESSION['email'])){
   header("Location: kirjautuminen.php");
