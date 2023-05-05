@@ -43,7 +43,7 @@ if(isset($_POST['talleta'])){
 $email = $_SESSION['email'];
 $vikailmoitusID = $_GET['vikailmoitusID'];
 
-$query = "SELECT *, asukas.asukasnimi, taloyhtio.taloyhtionnimi, tyontekija.tyontekijasposti,
+$query = "SELECT *, asukas.asukasnimi, taloyhtio.taloyhtionnimi, tyontekija.tyontekijasposti
           FROM vikailmoitus 
           INNER JOIN taloyhtio 
           ON vikailmoitus.taloyhtionID = taloyhtio.taloyhtioID 
