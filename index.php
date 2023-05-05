@@ -2,7 +2,9 @@
 
 <div class="container-fluid container-index vh-100">
 
- 
+ <div class="container" style="background-color:transparent">
+
+
 <div class="row pt-5">
     <div class="col-sm-12 indextext">
       <h3 class="display-6 font-weight-bold indexheader" style="font-weight: 400;">Kiinteistöhuolto <br>Piispanen & Lönnberg Oy</h3>
@@ -18,6 +20,7 @@
     </div>
 
   </div>
+</div>
 </div>
     
 
