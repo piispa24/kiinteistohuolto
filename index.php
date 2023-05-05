@@ -1,7 +1,9 @@
 <?php require "header.php"; ?>
 
 <div class="container-fluid container-index vh-100">
-  <div class="row pt-5">
+<div class="container" style="background-color:transparent">
+ 
+<div class="row pt-5">
     <div class="col-sm-6 p-5 indextext">
       <h3 class="display-6 font-weight-bold indexheader" style="font-weight: 400;">Kiinteistöhuolto <br>Piispanen & Lönnberg Oy</h3>
       <h1 class="display-3 font-weight-bold indexheader" style="font-weight: 900;">Kiinteistöpalvelua <br>kaiken kokoisille <br>taloyhtiöille Helsingissä</h1>
@@ -20,6 +22,7 @@
     </div>
   </div>
 </div>
-
+    
+</div> 
 
 <?php require "footer.php"; ?>

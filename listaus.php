@@ -13,7 +13,7 @@ $kysely = "SELECT *, asukas.asukasnimi, taloyhtio.osoite, asukas.huoneisto, tyon
             ON vikailmoitus.tyontekijaID = tyontekija.tyontekijaID";
 
             
-//$kysely = "SELECT *, asukas.asukasnimi, taloyhtio.osoite, tyontekija.tyontekijanimi FROM vikailmoitus INNER JOIN asukas ON vikailmoitus.asukasID = asukas.asukasID INNER JOIN taloyhtio ON vikailmoitus.taloyhtionID = taloyhtio.taloyhtioID INNER JOIN tyontekija ON vikailmoitus.tyontekijaID = tyontekija.tyontekijaID";
+
 $data = $yhteys->query($kysely);
 
 $JSON = '{"auto":[';
