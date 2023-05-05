@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 require "connect.php";
 
-if(!isset($_SESSION['email'])){
+if(!isset($_SESSION['tyojohtoemail'])){
     header("Location: tyokirjautuminen.php");
     exit;
 }
