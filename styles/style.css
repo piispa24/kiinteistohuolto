@@ -84,6 +84,12 @@ body {
   color: white;
 }
 
+/* Yhteydenottolomake */
+.yhtform {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
 
 @media (max-width: 768px) {
   .indextext {
