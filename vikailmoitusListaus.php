@@ -35,7 +35,7 @@ require "header.php";
             <?php
             require "connect.php";
   
-            $email = $_SESSION['email']; // Valitsee isännöitsijän session
+            $email = $_SESSION['email']; // Valitsee työntekijän session
             $query = "SELECT * FROM tyontekija WHERE tyontekija.tyontekijasposti = :tyontekijasposti";
 
             $haku = $yhteys->prepare($query);
