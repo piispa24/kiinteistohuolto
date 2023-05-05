@@ -21,18 +21,24 @@ require "connect.php";
                 $kirjaudu->execute();
                 $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
                 
+                
                 if ($data) {
-                    // user is authenticated, set session variable and redirect to the secure page
-                    $_SESSION['tyojohtoemail'] = $tyontekijasposti;
-                    header('Location: tyonjohtoApp.php');
-                    exit;
+                    // user is authenticated, verify the password
+                    if (password_verify($passwd, $data['tyontekijasalasana'])) {
+                        // password matches, set session variable and redirect to the secure page
+                        $_SESSION['tyojohtoemail'] = $tyontekijasposti;
+                        header('Location: tyonjohtoApp.php');
+                        exit;
+                    } else {
+                        // password does not match, show an error message
+                        echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+                    }
                 } else {
                     // authentication failed, show an error message
                     echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
-                }    
+                }
             }
         }
-
         if(isset($_SESSION['tyojohtoemail'])) {
             header("location: index.php");
         }
