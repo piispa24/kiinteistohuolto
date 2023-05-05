@@ -7,26 +7,28 @@ if(!isset($_SESSION['email'])){
   header("Location: kirjautuminen.php");
   exit;
 }
+// Tarkistaa jos kaytettavissa nappia on painettu
 if (isset($_POST['kaytettavissa'])) {
-    // Button has been clicked, update the database
-    $kaytettavissa = $_POST['kaytettavissa'];
-    $tyontekijasposti = $_SESSION['email'];
+    $kaytettavissa = $_POST['kaytettavissa']; // Asettaa kaytettavissa arvon muuttujaan ja arvoksi true
+    $tyontekijasposti = $_SESSION['email']; // Hakee työntekijän session
   
+    // Kysely päivittämään tietokanta
     $haku = "UPDATE tyontekija SET kaytettavyysID = 1 WHERE tyontekijasposti = :tyontekijasposti";
     $komento = $yhteys->prepare($haku);
     $komento->execute([
       'tyontekijasposti' => $tyontekijasposti
     ]);
-        $button_class = 'btn-success'; // Update the button class for the success state
+        $button_class = 'btn-success'; // Päivittää napin värin jos nappia painettu
     } else {
-        $button_class = 'btn-light'; // Use default button class for the initial state
+        $button_class = 'btn-light'; // Muuten pitää napin värin defaultina
     }
     
-    $_SESSION['button_class'] = $button_class; // Store the button class in a session variable
+    $_SESSION['button_class'] = $button_class; // Säilyttää napin luokan session muuttujassa
     
     header("Location: tyontekijaApp.php");
     
-// Check if the keikalla form has been submitted
+// Sama toiminnallisuus toistuu alla joten ylläolevat kommentit pätee
+
 if(isset($_POST['keikalla'])) {
     $keikalla = $_POST['keikalla'];
     $tyontekijasposti = $_SESSION['email'];
@@ -37,49 +39,45 @@ if(isset($_POST['keikalla'])) {
     $komento->execute([
     'tyontekijasposti' => $tyontekijasposti
     ]);
-        $button_class2 = 'btn-warning'; // Update the button class for the success state
+        $button_class2 = 'btn-warning';
     } else {
-        $button_class2 = 'btn-light'; // Use default button class for the initial state
+        $button_class2 = 'btn-light';
     }
     
-    $_SESSION['button_class2'] = $button_class2; // Store the button class in a session variable
+    $_SESSION['button_class2'] = $button_class2;
     header("Location: tyontekijaApp.php");
 
-// Check if the tauolla form has been submitted
 if(isset($_POST['tauolla'])) {
     $tauolla = $_POST['tauolla'];
     $tyontekijasposti = $_SESSION['email'];
 
-    // Update the tyontekija table
     $haku = "UPDATE tyontekija SET kaytettavyysID = 3 WHERE tyontekijasposti = :tyontekijasposti";
     $komento = $yhteys->prepare($haku);
     $komento->execute([
     'tyontekijasposti' => $tyontekijasposti
     ]);
-        $button_class3 = 'btn-primary'; // Update the button class for the success state
+        $button_class3 = 'btn-primary';
     } else {
-        $button_class3 = 'btn-light'; // Use default button class for the initial state
+        $button_class3 = 'btn-light'; 
     }
 
-    $_SESSION['button_class3'] = $button_class3; // Store the button class in a session variable
+    $_SESSION['button_class3'] = $button_class3; 
     header("Location: tyontekijaApp.php");
 
-// Check if the poissa form has been submitted
 if(isset($_POST['poissa'])) {
     $poissa = $_POST['poissa'];
     $tyontekijasposti = $_SESSION['email'];
 
-    // Update the tyontekija table
     $haku = "UPDATE tyontekija SET kaytettavyysID = 4 WHERE tyontekijasposti = :tyontekijasposti";
     $komento = $yhteys->prepare($haku);
     $komento->execute([
     'tyontekijasposti' => $tyontekijasposti
     ]);
-        $button_class4 = 'btn-danger'; // Update the button class for the success state
+        $button_class4 = 'btn-danger';
     } else {
-        $button_class4 = 'btn-light'; // Use default button class for the initial state
+        $button_class4 = 'btn-light';
     }
 
-    $_SESSION['button_class4'] = $button_class4; // Store the button class in a session variable
+    $_SESSION['button_class4'] = $button_class4;
     header("Location: tyontekijaApp.php");
 ?>

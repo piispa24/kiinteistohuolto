@@ -24,17 +24,20 @@ if(!isset($_SESSION['email'])){
     
     <!-- Työntekijän käytettävyys -->
 
-    <div class="row ">
-      <div class="col-sm-3 tyontekijaRivi">
+    <div class="row mt-5">
+      <div class="col-sm-3 mt-1 tyontekijaRivi">
         <form method="POST" action="kaytettavyys.php">
+          <!--Luo uuden relative sijaintikontekstin napeille-->
           <div class="position-relative">
+            <!--Päällekkäin olevat napit-->
             <button type="button" class="btn btn-large bg-light position-absolute w-100 h-100 underline"></button>
+            <!--Sessio värimuutosta varten-->
             <button type="submit" name="kaytettavissa" class="underline btn btn-large text-dark <?php echo $_SESSION['button_class']; ?> position-relative z-index-1">Käytettävissä</button>
           </div>
         </form>
       </div>
 
-        <div class="col-sm-3 tyontekijaRivi">
+        <div class="col-sm-3 mt-1 tyontekijaRivi">
           <form method="POST" action="kaytettavyys.php">
           <div class="position-relative">
             <button type="button" class="btn btn-large bg-light position-absolute w-100 h-100 underline"></button>
@@ -43,7 +46,7 @@ if(!isset($_SESSION['email'])){
           </form>
         </div>
 
-        <div class="col-sm-3 tyontekijaRivi">
+        <div class="col-sm-3 mt-1 tyontekijaRivi">
           <form method="POST" action="kaytettavyys.php">
             <div class="position-relative">
               <button type="button" class="btn btn-large bg-light position-absolute w-100 h-100 underline"></button>
@@ -52,7 +55,7 @@ if(!isset($_SESSION['email'])){
             </form>
         </div>
 
-        <div class="col-sm-3 tyontekijaRivi">
+        <div class="col-sm-3 mt-1 tyontekijaRivi">
           <form method="POST" action="kaytettavyys.php">
             <div class="position-relative">
               <button type="button" class="btn btn-large bg-light position-absolute w-100 h-100 underline"></button>
