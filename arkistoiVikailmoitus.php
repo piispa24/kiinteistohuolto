@@ -43,7 +43,7 @@ if(isset($_POST['talleta'])){
 $email = $_SESSION['email'];
 $vikailmoitusID = $_GET['vikailmoitusID'];
 
-$query = "SELECT *, asukas.asukasnimi, taloyhtio.taloyhtionnimi, tyontekija.tyontekijasposti 
+$query = "SELECT *, asukas.asukasnimi, taloyhtio.taloyhtionnimi, tyontekija.tyontekijasposti,
           FROM vikailmoitus 
           INNER JOIN taloyhtio 
           ON vikailmoitus.taloyhtionID = taloyhtio.taloyhtioID 
@@ -62,7 +62,7 @@ $results = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <div id="contactBg" class="container mt-5 bg-light p-5">
     <p><a href=katsoTyontehtavat.php class="btn btn-success">Takaisin</a></p>
-    <h1>Arkistoituasi tehtävän et voi enää tarkastella tai muokata sitä</h1>
+    <h5>Arkistoituasi tehtävän et voi enää tarkastella tai muokata sitä</h5>
     <form method="POST" action="">
  
     <div class="mb-1 mt-4" style="display: none;">
@@ -71,7 +71,7 @@ $results = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
     <div class="mb-1 mt-4" style="display: none;">
         <label for="otsikko" class="form-label"></label>
-        <input type="v" class="form col-sm-4" placeholder="" name="tyontekijaID" value="<?php echo $results['tyontekijaID']; ?>">
+        <input type="hidden" class="form col-sm-4" placeholder="" name="tyontekijaID" value="<?php echo $results['tyontekijaID']; ?>">
     </div>
     <div class="mb-1 mt-4" style="display: none;">
         <label for="otsikko" class="form-label"></label>
