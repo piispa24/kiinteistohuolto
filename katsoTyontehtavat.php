@@ -1,12 +1,12 @@
-<?php session_start();
+<?php
 require "connect.php";
 require "header.php"; 
 if(!isset($_SESSION['email'])){
   header("Location: kirjautuminen.php");
   exit;
 }
-
 ?>
+
 <?php
 $email = $_SESSION['email'];
 $query = "SELECT *, asukas.asukasnimi, taloyhtio.taloyhtionnimi, tyontekija.tyontekijasposti 

@@ -4,8 +4,6 @@ if(!isset($_SESSION['email'])){
   header("Location: kirjautuminen.php");
   exit;
 }
-
-
 ?>
 
 <div class="container-fluid container-paneeli">

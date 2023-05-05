@@ -1,11 +1,7 @@
 <?php 
-
 require "header.php"; 
 require "connect.php";
-
 ?>
-
-
 
 <div class="container-fluid p-0 container-paneeli p-5">
 
