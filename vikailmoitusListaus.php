@@ -1,7 +1,9 @@
 <?php 
-session_start();
 require "header.php"; 
-
+if(!isset($_SESSION['email'])){
+  header("Location: kirjautuminen.php");
+  exit;
+}
 ?>
 
 <div class="container mt-5">
@@ -16,8 +18,6 @@ require "header.php";
       <?php if(isset($_SESSION['email'])): ?>
         <p><a href=tyontekijaApp.php class="btn btn-success">Takaisin</a></p>
       <?php endif; ?>
-
-      
       
   <div class="table-responsive">
    <table class="table table-striped">
@@ -27,24 +27,9 @@ require "header.php";
          <th>Huoneisto</th>
          <th>Otsikko</th>
          <th>Sisältö</th>
-         <th>Työntekijä</th>
          <th></th>
       </tr>
-            
-      
-            <?php
-            require "connect.php";
-  
-            $email = $_SESSION['email']; // Valitsee työntekijän session
-            $query = "SELECT * FROM tyontekija WHERE tyontekija.tyontekijasposti = :tyontekijasposti";
-
-            $haku = $yhteys->prepare($query);
-            $haku->bindParam(':tyontekijasposti', $email);
-            $haku->execute();
-            $result = $haku->fetch(PDO::FETCH_ASSOC);
-
-            $tyontekijaID = $result['tyontekijaID'];
-            ?>
+        
             <?php
               include("listaus.php");
              
@@ -60,14 +45,7 @@ require "header.php";
                       <td><?php echo $vika['Huoneisto']; ?> </td>
                       <td><?php echo $vika['Vikaotsikko']; ?> </td>
                       <td><?php echo $vika['Vikaasia']; ?> </td>
-                      <td><?php echo $vika['Tyontekijanimi']; ?> </td>
-                      <td>
-                        <form method="post" action="paivitaTyo.php">
-                          <input type="hidden" name="vikailmoitusID" value="<?php echo $vika['VikailmoitusID']; ?>">
-                          <input type="hidden" name="TyontekijaID" value="<?php echo $tyontekijaID; ?>">
-                          <button type="submit" name="kuittaa" class="btn btn-warning">Kuittaa itselle</button>
-                        </form>
-                      </td>
+                      <td><p><a href="###" class="btn btn-warning">Kuittaa itselle</a></p></td>
                     </tr>
                     
                     <?php  
@@ -85,8 +63,6 @@ require "header.php";
                     print($rivit->rowCount());
                 ?>
             </th>
-            <th></th>
-            <th></th>
             <th></th>
             <th></th>
             <th></th>

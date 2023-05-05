@@ -1,11 +1,3 @@
-<!--
-<footer class="footer">
-  <div class="container" style="background-color: #333;" id="footer">
-    <p>Y-Tunnus 978987397839-22 Puhelin:95959333</p>
-  </div>
-</footer>
--->
-
 <footer class="container-fluid bg-dark text-white py-4">
   <div class="row text-center">
     <div class="col-sm-12">

@@ -1,9 +1,6 @@
-<?php session_start();
+<?php
 require "header.php"; 
 require "connect.php";
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 ?>
 
 <div class="container-fluid p-0 container-paneeli p-5">

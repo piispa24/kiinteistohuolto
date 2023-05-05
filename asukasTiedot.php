@@ -5,7 +5,6 @@ if(!isset($_SESSION['sposti'])){
   header("Location: asukaskirjautuminen.php");
   exit;
 }
-
 ?>
 <?php
 // Hakee asukkaan tiedot tietokannasta

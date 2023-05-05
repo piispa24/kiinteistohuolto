@@ -1,9 +1,11 @@
 <?php require "header.php"; ?>
-
 <?php require "connect.php"; ?>
 
 <?php
-
+if(!isset($_SESSION['tyojohtoemail'])){
+  header("Location: tyokirjautuminen.php");
+  exit;
+}
 
 if(isset($_POST['submit'])){
   if($_POST['nimi'] == '' OR $_POST['puhelin'] == '' OR $_POST['email'] == '' OR $_POST['password'] == '' OR $_POST['kaytettavyys'] == '' OR $_POST['rooli'] == ''){

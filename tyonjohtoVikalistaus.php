@@ -1,6 +1,9 @@
 <?php 
-session_start();
-require "header.php"; 
+require "header.php";
+if(!isset($_SESSION['tyojohtoemail'])){
+  header("Location: tyokirjautuminen.php");
+  exit;
+}
 ?>
 
 <div class="container mt-5">
