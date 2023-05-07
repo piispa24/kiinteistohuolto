@@ -6,7 +6,7 @@ if(!isset($_SESSION['isannsposti'])){
 }
 ?>
 
-<div class="container-fluid p-0 container-paneeli">
+<div class="container-fluid container-paneeli">
   
     <!-- Alert jos vikailmoituksen jättö onnistui. Hakee successin vikailmoitusSivuIsann.php:sta -->
     <?php if(isset($_GET['success'])): ?>
