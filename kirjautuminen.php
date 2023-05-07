@@ -9,31 +9,34 @@ require "connect.php";
     <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 login">
         <h1>Työntekijän kirjautuminen</h1>
             <?php
-            if(isset($_POST['submit'])) {
-                $tyontekijasposti = $_POST['email'];
-                $passwd = $_POST['password'];
 
-                if (empty($tyontekijasposti) || empty($passwd)) {
+            if (isset($_POST['submit'])) {
+                $email = $_POST['email'];
+                $passwd = $_POST['password'];
+    
+                if (empty($email) || empty($passwd)) {
                     echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
                 } else {
-                    $komento = "SELECT * FROM tyontekija WHERE tyontekijasposti = '$tyontekijasposti' AND tyontekijasalasana = '$passwd' AND rooliID = 2";
-                    $kirjaudu = $yhteys->query($komento);
-                    $kirjaudu->execute();
-                    $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
-                    
-                    if ($data) {
-                        // user is authenticated, set session variable and redirect to the secure page
-                        $_SESSION['email'] = $tyontekijasposti;
-                        header('Location: tyontekijaApp.php');
-                        exit;
+                    $kirjaudu = $yhteys->prepare("SELECT * FROM tyontekija WHERE tyontekijasposti = ? AND rooliID = 2");
+                    $kirjaudu->execute([$email]);
+                    $user = $kirjaudu->fetch(PDO::FETCH_ASSOC);
+
+                    if ($user) {
+                        if (password_verify($passwd, $user['tyontekijasalasana'])) {
+                            $_SESSION['email'] = $user['tyontekijasposti'];
+                            header("Location: tyontekijaApp.php");
+                            exit;
+                        } else {
+                            echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+                        }
                     } else {
-                        // authentication failed, show an error message
                         echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
                     }
                 }
             }
+
             if(isset($_SESSION['email'])) {
-                header("location: index.php");
+                header("Location: index.php");
             }
             ?>
             <form method="POST" action="kirjautuminen.php">

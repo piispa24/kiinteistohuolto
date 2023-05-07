@@ -4,39 +4,38 @@ require "connect.php";
 ?>
 
 <div class="container-fluid p-0 container-paneeli p-5">
-
-
     <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 login">
     <h1>Työnjohdon kirjautuminen</h1>
         <?php
-        if(isset($_POST['submit'])) {
-            $tyontekijasposti = $_POST['email'];
-            $passwd = $_POST['password'];
 
-            if (empty($tyontekijasposti) || empty($passwd)) {
-                echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
-            } else {
-                $komento = "SELECT * FROM tyontekija WHERE tyontekijasposti = '$tyontekijasposti' AND tyontekijasalasana = '$passwd' AND rooliID = 3";
-                $kirjaudu = $yhteys->query($komento);
-                $kirjaudu->execute();
-                $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
-                
-                
-                if ($data) {
-                    // user is authenticated, set session variable and redirect to the secure page
-                    $_SESSION['tyojohtoemail'] = $tyontekijasposti;
-                    header('Location: tyonjohtoApp.php');
-                    exit;
-                } else {
-                    // authentication failed, show an error message
+            if (isset($_POST['submit'])) {
+                $email = $_POST['email'];
+                $passwd = $_POST['password'];
+
+                if (empty($email) || empty($passwd)) {
                     echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
-                }    
-            }
-        }
+                } else {
+                    $kirjaudu = $yhteys->prepare("SELECT * FROM tyontekija WHERE tyontekijasposti = ? AND rooliID = 3");
+                    $kirjaudu->execute([$email]);
+                    $user = $kirjaudu->fetch(PDO::FETCH_ASSOC);
 
-        if(isset($_SESSION['tyojohtoemail'])) {
-            header("location: index.php");
-        }
+                    if ($user) {
+                        if (password_verify($passwd, $user['tyontekijasalasana'])) {
+                            $_SESSION['tyojohtoemail'] = $user['tyontekijasposti'];
+                            header("Location: tyonjohtoApp.php");
+                            exit;
+                        } else {
+                            echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+                        }
+                    } else {
+                        echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+                    }
+                }
+            }
+
+            if(isset($_SESSION['tyojohtoemail'])) {
+                header("Location: index.php");
+            }
         ?>
         <form method="POST" action="tyokirjautuminen.php">
         <div class="mb-3 mt-3">

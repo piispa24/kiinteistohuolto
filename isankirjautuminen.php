@@ -8,32 +8,33 @@ require "connect.php";
     <div id="kirjautuminenBg" class="container-fluid bg-light col-sm-6 p-5 login">
         <h1>Isännöitsijän kirjautuminen</h1>
             <?php
-            if(isset($_POST['submit'])) {
-                $isannoitsijasposti = $_POST['email'];
+                if (isset($_POST['submit'])) {
+                $email = $_POST['email'];
                 $passwd = $_POST['password'];
 
-                if (empty($isannoitsijasposti) || empty($passwd)) {
+                if (empty($email) || empty($passwd)) {
                     echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
                 } else {
-                    $komento = "SELECT * FROM isannoitsija WHERE isannoitsijasposti = '$isannoitsijasposti' AND isannoitsijasalasana = '$passwd'";
-                    $kirjaudu = $yhteys->query($komento);
-                    $kirjaudu->execute();
-                    $data = $kirjaudu->fetch(PDO::FETCH_ASSOC);
-                    
-                    if ($data) {
-                        // user is authenticated, set session variable and redirect to the secure page
-                        $_SESSION['isannsposti'] = $isannoitsijasposti;
-                        header('Location: isannoitsijaApp.php');
-                        exit;
+                    $kirjaudu = $yhteys->prepare("SELECT * FROM isannoitsija WHERE isannoitsijasposti = ?");
+                    $kirjaudu->execute([$email]);
+                    $user = $kirjaudu->fetch(PDO::FETCH_ASSOC);
+
+                    if ($user) {
+                        if (password_verify($passwd, $user['isannoitsijasalasana'])) {
+                            $_SESSION['isannsposti'] = $user['isannoitsijasposti'];
+                            header("Location: isannoitsijaApp.php");
+                            exit;
+                        } else {
+                            echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
+                        }
                     } else {
-                        // authentication failed, show an error message
                         echo '<div class="alert alert-danger">Väärä sähköposti tai salasana</div>';
                     }
                 }
             }
 
             if(isset($_SESSION['isannsposti'])) {
-                header("location: index.php");
+                header("Location: index.php");
             }
             ?>
             <form method="POST" action="isankirjautuminen.php">

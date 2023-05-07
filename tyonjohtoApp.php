@@ -32,6 +32,12 @@ if(!isset($_SESSION['tyojohtoemail'])){
     </div>
     </div>
 
+    <div class="row">
+    <div class="col-sm-12 p-3 tyontekijaRivi">
+      <p><a class="underline btn btn-danger btn-large" href="isannoitsijaRekisterointi.php">Lisää isännöitsijä</a></p>
+    </div>
+    </div>
+
 
 </div>
 

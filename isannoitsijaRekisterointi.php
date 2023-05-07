@@ -8,36 +8,36 @@ if(!isset($_SESSION['tyojohtoemail'])){
 }
 
 if(isset($_POST['submit'])){
-  if($_POST['nimi'] == '' OR $_POST['puhelin'] == '' OR $_POST['email'] == '' OR $_POST['password'] == '' OR $_POST['kaytettavyys'] == '' OR $_POST['rooli'] == ''){
+  if($_POST['nimi'] == '' OR $_POST['puhelin'] == '' OR $_POST['email'] == '' OR $_POST['password'] == '' OR $_POST['rooli'] == '' OR $_POST['taloyhtioID'] == ''){
     echo "Vaaditut kentät ovat tyhjiä";
   }else{
     $nimi = $_POST['nimi'];
     $puhelin = $_POST['puhelin'];
     $email = $_POST['email'];
     $salasana = $_POST['password'];
-    $kaytettavyys = $_POST['kaytettavyys'];
     $rooli = $_POST['rooli'];
+    $taloyhtio = $_POST['taloyhtioID'];
 
-    $lisays = "INSERT INTO tyontekija (tyontekijanimi, tyontekijapuhnro, tyontekijasposti, tyontekijasalasana, kaytettavyysID, rooliID) VALUES (:tyontekijanimi, :tyontekijapuhnro, :tyontekijasposti, :tyontekijasalasana, :kaytettavyysID, :rooliID)";
+    $lisays = "INSERT INTO isannoitsija (isannoitsijanimi, isannoitsijapuh, isannoitsijasposti, isannoitsijasalasana, rooliID, taloyhtioID) 
+    VALUES (:isannoitsijanimi, :isannoitsijapuh, :isannoitsijasposti, :isannoitsijasalasana, :rooliID, :taloyhtioID)";
     $lisaa = $yhteys->prepare($lisays);
     $lisaa->execute([
-      ':tyontekijanimi' => $nimi, 
-      ':tyontekijapuhnro' => $puhelin, 
-      ':tyontekijasposti' => $email,
-      ':tyontekijasalasana' => password_hash($salasana, PASSWORD_DEFAULT),
-      ':kaytettavyysID' => $kaytettavyys,
+      ':isannoitsijanimi' => $nimi, 
+      ':isannoitsijapuh' => $puhelin, 
+      ':isannoitsijasposti' => $email,
+      ':isannoitsijasalasana' => password_hash($salasana, PASSWORD_DEFAULT),
       ':rooliID' => $rooli,
+      ':taloyhtioID' => $taloyhtio,
     ]);
     header("Location: tyonjohtoApp.php");
   }
 }
-
 ?>
 
 <main class="form-signin m-auto">
 
-  <form class="bg-light p-3 inputBg mt-3" method="POST" action="tyontekijaRekisterointi.php">
-  <h3 class="h3 fw-normal text-center">Lisää työntekijä</h3>
+  <form class="bg-light p-3 inputBg mt-3" method="POST" action="isannoitsijaRekisterointi.php">
+  <h3 class="h3 fw-normal text-center">Lisää isännöitsijä</h3>
   <p><a href=tyonjohtoApp.php class="btn btn-success">Takaisin</a></p>
     <div class="form-floating">
       <input name="nimi" type="text" class="form-control inputSarake mb-2" id="floatingInput">
@@ -56,17 +56,15 @@ if(isset($_POST['submit'])){
       <label for="floatingPassword">Salasana</label>
     </div>
     <div class="form-floating">
-      <input name="kaytettavyys" type="hidden" class="form-control inputSarake mb-2" id="floatingInput" value="3">
-      <label for="floatingPassword">Käytettävyys</label>
+      <input name="rooli" type="hidden" class="form-control inputSarake mb-2" id="floatingInput" value="4">
+      <label for="floatingInput">Rooli</label>
     </div>
     <div class="form-floating">
-      <input name="rooli" type="text" class="form-control inputSarake mb-2" id="floatingInput" value="2">
-      <label for="floatingInput">Rooli ( 2 = Työntekijä 3 = Työnjohtaja )</label>
+      <input name="taloyhtioID" type="text" class="form-control inputSarake mb-2" id="floatingInput">
+      <label for="floatingInput">TaloyhtiöID</label>
     </div>
-    
 
-    <button name="submit" class="w-100 btn btn-lg btn-success" type="submit">Lisää työntekijä</button>
-    
+    <button name="submit" class="w-100 btn btn-lg btn-success" type="submit">Lisää isännöitsijä</button>
 
   </form>
 </main>
