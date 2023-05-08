@@ -28,7 +28,7 @@
 <div class="container-fluid container-index vh-100 p-3">
     <div class="container-fluid">
         
-        <div id="contactBg" class="container bg-light p-3 mt-5 col-sm-6">
+        <div id="contactBg" class="container bg-light p-3 mt-3 col-sm-6">
             <h3 class="mb-4">Yhteydenottolomake</h3>
             <h5>Yhteystiedot:</h5>
             <form id="yhteydenottoLomake" method="POST" action="contact.php">

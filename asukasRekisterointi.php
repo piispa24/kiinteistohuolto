@@ -84,8 +84,8 @@ if(isset($_POST['submit'])){
       <label for="floatingPassword">Puhelinnumero</label>
     </div>
     <div class="form-floating">
-      <input name="taloyhtio" value="<?php echo $taloyhtioID; ?>" placeholder="PIILOTETAAN MYÖHEMMIN" type="text" class="form-control inputSarake mb-2" id="floatingInput">
-      <label for="floatingInput">PIILOTETAAN MYÖHEMMIN</label>
+      <input name="taloyhtio" value="<?php echo $taloyhtioID; ?>" placeholder="PIILOTETAAN MYÖHEMMIN" type="hidden" class="form-control inputSarake mb-2" id="floatingInput">
+      <label for="floatingInput"></label>
     </div>
     <div class="form-floating">
       <input name="huoneisto" type="text" class="form-control inputSarake mb-2" id="floatingInput">

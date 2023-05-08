@@ -33,7 +33,7 @@ $huoneisto = $result['huoneisto'];
          <th>Nimi</th>
          <th>Puhelin</th>
          <th>Sähköposti</th>
-         <th>Osoite</th>
+         <th>Taloyhtiö</th>
          <th>Huoneisto</th>
       </tr>
       <?php

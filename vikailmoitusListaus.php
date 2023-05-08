@@ -6,7 +6,7 @@ if(!isset($_SESSION['email'])){
 }
 ?>
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
         <br>
       <h3>Vikailmoitukset</h3>
       <br>
@@ -23,7 +23,7 @@ if(!isset($_SESSION['email'])){
    <table class="table table-striped">
       <tr>
          <th>Ilmoittaja</th>
-         <th>Taloyhtiö</th>
+         <th>Osoite</th>
          <th>Huoneisto</th>
          <th>Otsikko</th>
          <th>Sisältö</th>
@@ -45,7 +45,7 @@ if(!isset($_SESSION['email'])){
                       <td><?php echo $vika['Huoneisto']; ?> </td>
                       <td><?php echo $vika['Vikaotsikko']; ?> </td>
                       <td><?php echo $vika['Vikaasia']; ?> </td>
-                      <td><p><a href="###" class="btn btn-warning">Kuittaa itselle</a></p></td>
+                      <td><p><a href="paivitaTyo.php" class="btn btn-warning">Kuittaa itselle</a></p></td>
                     </tr>
                     
                     <?php  
