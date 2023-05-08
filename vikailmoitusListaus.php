@@ -29,7 +29,20 @@ if(!isset($_SESSION['email'])){
          <th>Sisältö</th>
          <th></th>
       </tr>
-        
+      <?php
+            require "connect.php";
+  
+            $email = $_SESSION['email']; // Valitsee isännöitsijän session
+            $query = "SELECT * FROM tyontekija WHERE tyontekija.tyontekijasposti = :tyontekijasposti";
+
+            $haku = $yhteys->prepare($query);
+            $haku->bindParam(':tyontekijasposti', $email);
+            $haku->execute();
+            $result = $haku->fetch(PDO::FETCH_ASSOC);
+
+            $tyontekijaID = $result['tyontekijaID'];
+            ?>
+            
             <?php
               include("listaus.php");
              
@@ -45,7 +58,13 @@ if(!isset($_SESSION['email'])){
                       <td><?php echo $vika['Huoneisto']; ?> </td>
                       <td><?php echo $vika['Vikaotsikko']; ?> </td>
                       <td><?php echo $vika['Vikaasia']; ?> </td>
-                      <td><p><a href="paivitaTyo.php" class="btn btn-warning">Kuittaa itselle</a></p></td>
+                      <td>
+                        <form method="post" action="paivitaTyo.php">
+                          <input type="hidden" name="vikailmoitusID" value="<?php echo $vika['VikailmoitusID']; ?>">
+                          <input type="hidden" name="TyontekijaID" value="<?php echo $tyontekijaID; ?>">
+                          <button type="submit" name="kuittaa" class="btn btn-warning">Kuittaa itselle</button>
+                        </form>
+                      </td>
                     </tr>
                     
                     <?php  
