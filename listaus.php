@@ -10,7 +10,8 @@ $kysely = "SELECT *, asukas.asukasnimi, taloyhtio.osoite, asukas.huoneisto, tyon
             INNER JOIN taloyhtio 
             ON vikailmoitus.taloyhtionID = taloyhtio.taloyhtioID
             LEFT JOIN tyontekija 
-            ON vikailmoitus.tyontekijaID = tyontekija.tyontekijaID";
+            ON vikailmoitus.tyontekijaID = tyontekija.tyontekijaID
+            WHERE ratkaisu IS NULL";
 
             
 

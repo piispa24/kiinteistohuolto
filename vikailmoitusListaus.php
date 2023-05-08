@@ -76,7 +76,7 @@ if(!isset($_SESSION['email'])){
                 <?php
                     require "connect.php";
 
-                    $haku = "SELECT * FROM vikailmoitus";
+                    $haku = "SELECT * FROM vikailmoitus WHERE ratkaisu IS NULL";
                     $rivit = $yhteys->query($haku);
 
                     print($rivit->rowCount());
