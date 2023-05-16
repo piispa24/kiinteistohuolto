@@ -26,10 +26,10 @@ if(isset($_POST['talleta'])){
         $stmt->bindParam(':vikailmoitusID', $vikailmoitusID);
         $stmt->execute();
         //poistaa tehtavan vikailmoituksista
-        /*$kysely = "DELETE FROM vikailmoitus WHERE vikailmoitusID = :vikailmoitusID";
+        $kysely = "DELETE FROM vikailmoitus WHERE vikailmoitusID = :vikailmoitusID";
         $stmt = $yhteys->prepare($kysely);
         $stmt->bindParam(':vikailmoitusID', $vikailmoitusID);
-        $stmt->execute();*/
+        $stmt->execute();
         header("Location: katsoTyontehtavat.php");
     }
 }
