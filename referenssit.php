@@ -47,26 +47,26 @@
                                 "Olemme käyttäneet Piispanen & Lönnbergin palveluita jo usean vuoden ajan ja 
                                 olemme erittäin tyytyväisiä. He ovat aina hoitaneet kaiken sovitusti ja tehneet 
                                 tarvittavat korjaukset nopeasti ja luotettavasti."
-                            </i><br>- Taloyhtiö Viiriäinen</p>
+                            </i><br>- Taloyhtiö Teeri</p>
                         </li>
                         <li>
                             <p><i>
                                 "Suosittelemme ehdottomasti Piispanen & Lönnbergin palveluita kaikille 
                                 taloyhtiöille! Heidän avullaan talomme on aina siisti ja hyvin hoidettu."
-                            </i><br>- Taloyhtiö Viiriäinen</p>
+                            </i><br>- Taloyhtiö Kuikka</p>
                         </li>
                         <li>
                             <p><i>
                                 "Piispanen & Lönnbergin henkilökunta on aina ystävällistä ja avuliasta. 
                                 He ovat auttaneet meitä monissa erilaisissa ongelmatilanteissa ja olemme 
                                 todella kiitollisia heidän ammattitaidostaan."
-                            </i><br>- Taloyhtiö Viiriäinen</p>
+                            </i><br>- Taloyhtiö Kottarainen</p>
                         </li>
                         <li>
                             <p><i>
-                                "Olemme erittäin tyytyväisiä Piispanen & Lönnbergin huolto- ja siivouspalveluihin. 
+                                "Olen erittäin tyytyväinen Piispanen & Lönnbergin huolto- ja siivouspalveluihin. 
                                 He ovat todella tehokkaita ja ammattitaitoisia ja hoitavat kaiken aina sovitusti."
-                            </i><br>- Taloyhtiö Viiriäinen</p>
+                            </i><br>- Asukas</p>
                         </li>
 
 
